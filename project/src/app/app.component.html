@@ -1,0 +1,631 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Laundry | Teamplate</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+
+  <!-- CSS here -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/assets/css/slicknav.css">
+  <link rel="stylesheet" href="/assets/css/flaticon.css">
+  <link rel="stylesheet" href="/assets/css/progressbar_barfiller.css">
+  <link rel="stylesheet" href="/assets/css/gijgo.css">
+  <link rel="stylesheet" href="/assets/css/animate.min.css">
+  <link rel="stylesheet" href="/assets/css/animated-headline.css">
+  <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="/assets/css/themify-icons.css">
+  <link rel="stylesheet" href="/assets/css/slick.css">
+  <link rel="stylesheet" href="/assets/css/nice-select.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+           
+* {box-sizing: border-box}
+body1 {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+float: left;
+border: 1px solid #ccc;
+background-color: #f1f1f1;
+width: 30%;
+height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+display: block;
+background-color: inherit;
+color: black;
+padding: 22px 16px;
+width: 100%;
+border: none;
+outline: none;
+text-align: left;
+cursor: pointer;
+transition: 0.3s;
+font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+float: left;
+padding: 0px 12px;
+border: 1px solid #ccc;
+width: 70%;
+border-left: none;
+height: 300px;
+}
+      body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+background-color: blue;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+width: auto;
+padding: 10px 18px;
+background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+text-align: center;
+margin: 24px 0 12px 0;
+position: relative;
+}
+
+img.avatar {
+width: 40%;
+border-radius: 50%;
+}
+
+.container {
+padding: 16px;
+}
+
+span.psw {
+float: right;
+padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+border: 1px solid #888;
+width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+position: absolute;
+right: 25px;
+top: 0;
+color: #000;
+font-size: 35px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: red;
+cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+-webkit-animation: animatezoom 0.6s;
+animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+from {-webkit-transform: scale(0)} 
+to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+from {transform: scale(0)} 
+to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+span.psw {
+   display: block;
+   float: none;
+}
+.cancelbtn {
+   width: 100%;
+}
+}
+  </style>
+</head>
+<header>
+  <!-- Header Start -->
+  <div class="header-area">
+      <div class="main-header header-sticky">
+          <!-- Logo -->
+          <div class="header-left">
+              <div class="logo">
+                  <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+              </div>
+              <div class="menu-wrapper  d-flex align-items-center">
+                  <!-- Main-menu -->
+                  <div class="main-menu d-none d-lg-block">
+                      <nav> 
+                          <ul id="navigation">                                                                                          
+                              <li class="active"><a href="index.html">Home</a></li>
+                              <li><a href="about.html">About</a></li>
+                              <li><a href="services.html">Services</a></li>
+                              <li><a href="blog.html">Blog</a>
+                                  <ul class="submenu">
+                                      <li><a href="blog.html">Blog</a></li>
+                                      <li><a href="blog_details.html">Blog Details</a></li>
+                                      <li><a href="elements.html">Element</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="contact.html">Contact</a></li>
+                              <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
+                               
+<div id="id01" class="modal">
+
+<form class="modal-content animate" #userForm_login="ngForm" (ngSubmit)="login(userForm_login.value)">
+<div class="imgcontainer">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+</div>
+<h1 style = "color: black;text-align: center;">Login</h1>
+<div class="container">
+  
+  <div class="form-wrapper">
+  <label for="email"><b>Email</b></label>
+  <input ngModel type="text" placeholder="Enter Email" #email = "ngModel" name="email" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm_login.touched && email.errors?.required">Please enter email</div>
+  </div>
+</div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Password</b></label>
+  <input ngModel type="password" placeholder="Enter Password" #password = "ngModel" name="password" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm_login.touched && password.errors?.required">Please enter password</div>
+  </div>  
+</div>
+
+
+  <label for="psw"><b>Security Question</b></label><br/>
+  <select ngModel #secques = "ngModel" name="secques" id="sec">
+      <option value="What's your pet name?">What's your pet name?</option>
+      <option value="What's your favourite destination ?">What's your favourite destination ?</option>
+      <option value="What's your favourite dish ?">What's your favourite dish ? </option>
+    </select>
+  <br/><br/>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Security Answer</b></label>
+  <input ngModel type="text" placeholder="Enter Security Answer" #secans = "ngModel" name="secans" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm_login.touched && secans.errors?.required">Please enter security Answer</div>
+  </div>
+  </div>
+
+  <button [disabled] = "!userForm_login.valid" >Login</button>
+  
+</div>
+<div class="container" style="background-color:#f1f1f1;text-align: center;">
+  <a onclick="document.getElementById('id05').style.display='block'" style="width:auto;color:black;">Forgot Password</a><br/>
+</div>
+<h3 style = "color: black;text-align: center;">If you are not a member.....</h3>
+<div class="container" style="background-color:#f1f1f1;text-align: center;">
+  Register For <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;color:black;">Laundry</a><br/>
+  Register as<a onclick="document.getElementById('id03').style.display='block'" style="width:auto;color: black;"> Customer</a>
+</div>
+</form>
+</div>
+
+
+<div id="id05" class="modal">
+
+  <div *ngIf = "show">
+  <form class="modal-content animate">
+  <div class="imgcontainer">
+    <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+  </div>
+  <h1 style = "color: black;text-align: center;">Forgot Password</h1>
+  <div class="container">
+
+    <form class="modal-content animate"  #getuserForm="ngForm" (ngSubmit)="isValidEmail(getuserForm.value)" novalidate >
+      <div class = "container">
+    <div class="form-wrapper">
+    <label for="email"><b>Enter Email</b></label><br/>
+    <input ngModel type="email" placeholder="Enter Email" #email_forgot = "ngModel" name="email_forgot" ng-model="email_forgot"required>
+    <div class = "text-danger">
+      <div *ngIf="getuserForm.touched && email_forgot.errors?.required">Please enter email</div>
+         </div>
+    
+  </div>
+  <button [disabled] = "!getuserForm.valid">Confirm Password</button>
+</div>
+</form>
+</div>
+</form>
+</div>
+
+
+<div *ngIf = "unshow">
+  <form class="modal-content animate">
+  <div class="imgcontainer">
+    <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+  </div>
+  <h1 style = "color: black;text-align: center;">Forgot Password</h1>
+  <div class="container">
+
+    <form class="modal-content animate" #otpForm="ngForm" (ngSubmit)="check(otp.value)" novalidate >
+      <div class = "container">
+    <div class="form-wrapper">
+    <label for="email"><b>Enter OTP</b></label>
+    <input ngModel type="text" placeholder="Enter OTP" #otp = "ngModel" name="otp" required>
+    <div *ngIf="otpForm.touched && otp.errors?.required">Please enter OTP</div>
+		This page will refresh in {{minutes}} : {{seconds}}</div> 
+  </div>
+  <button [disabled] = "!otpForm.valid">OTP</button>
+
+</form>
+</div>
+</form>
+</div>
+
+
+
+<div *ngIf = "conshow">
+  <form class="modal-content animate">
+  <div class="imgcontainer">
+    <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+  </div>
+  <h1 style = "color: black;text-align: center;">Forgot Password</h1>
+  <div class="container">
+
+    <form class="modal-content animate" #forgotForm="ngForm" (ngSubmit)="forgot(forgotForm.value)" novalidate >
+      <div class = "container">
+    <div class="form-wrapper">
+    <label for="email"><b>Enter Password</b></label>
+    <input ngModel type="text" placeholder="Enter Password" #chpassword = "ngModel" name="chpassword" required>
+    <div *ngIf="forgotForm.touched &&  chpassword.errors?.required">Please enter Password</div>
+    </div>
+    <div class="form-wrapper">
+    <label for="email"><b>Enter Confirm Password</b></label>
+    <input ngModel type="text" placeholder="Enter Confirm Password" #conchpassword = "ngModel" name="conchpassword" required>
+    <div *ngIf="forgotForm.touched && conchpassword.errors?.required">Please enter Confirm Password</div>
+  </div>
+  <button [disabled] = "!forgotForm.valid">Change Password</button>
+</div>
+</form>
+</div>
+</form>
+</div>
+               </div>      
+<div id="id02" class="modal">
+
+<form class="modal-content animate" #userForm="ngForm" (ngSubmit)="onSave(userForm.value)" novalidate >
+<div class="imgcontainer">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+</div>
+<h1 style = "color: black;text-align: center;">Laundry Registration</h1>
+
+<div class="container">
+
+  <div class="form-wrapper">
+  <label for="uname"><b>FirstName</b></label>
+  <input ngModel #FirstName_laun = "ngModel" type="text" placeholder="Enter First Name" name="FirstName_laun" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && FirstName_laun.errors?.required">Please enter FirstName</div>
+  </div>
+  </div>
+  <div class="form-wrapper">
+  <label for="psw"><b>LastName</b></label>
+  <input ngModel #LastName_laun = "ngModel" type="text" placeholder="Enter Last Name" name="LastName_laun" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && LastName_laun.errors?.required">Please enter lastName</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Company Name</b></label>
+  <input ngModel #comname = "ngModel" type="text" placeholder="Enter Company Name" name="comname" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && comname.errors?.required">Please enter CompanyName</div>
+  </div>
+  </div>
+
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Email</b></label>
+  <input ngModel  type="text" placeholder="Enter Email" #email_laundry = "ngModel" name="email_laundry" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && email_laundry.errors?.required">Please enter Email</div>
+  </div>
+  </div>
+
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Phone Number</b></label>
+  <input ngModel #pnumber = "ngModel" type="text" placeholder="Enter Phone Number" name="pnumber" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && pnumber.errors?.required">Please enter PhoneNumber</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>State</b></label><br/>
+  <select ngModel #state = "ngModel" name="state" id="state">
+      <option value="ts">Telangana</option>
+      <option value="ap">Andhra Pradesh</option>
+      <option value="tamil">TamilNadu</option>
+    </select>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && state.errors?.required">Please enter state</div>
+    </div>
+  </div>
+<br/><br/>
+
+<div class="form-wrapper">
+  <label for="psw"><b>Address1</b></label>
+  <input ngModel #add1 = "ngModel" id = "add1" type="text" placeholder="Enter Address1" name="add1" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && add1.errors?.required">Please enter Address</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Address2</b></label>
+  <input ngModel #add2 = "ngModel" id = "add2" type="text" placeholder="Enter Address2" name="add2" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && add2.errors?.required">Please enter Address</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>District</b></label><br/>
+  <select ngModel #district = "ngModel" name="district" id="district">
+      <option value="adi">Adilabad</option>
+      <option value="med">Medak</option>
+      <option value="Sidd">Siddipet </option>
+    </select>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && district.errors?.required">Please enter district</div>
+    </div>
+    </div>
+<br/><br/>
+
+
+<div class="form-wrapper">
+  <label for="psw"><b>Pincode</b></label>
+  <input ngModel #pincode = "ngModel" type="text" placeholder="Enter Pincode" name="pincode" required>
+  </div>
+  <div class="form-wrapper">
+  <label for="sec"><b>Security Question</b></label><br/>
+  <select ngModel #secques_laun = "ngModel" name="secques_laun" >
+      <option value="volvo">What's your pet name?</option>
+      <option value="saab">What's your favourite destination ?</option>
+      <option value="mercedes">What's your favourite dish ? </option>
+    </select>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && secques.errors?.required">Please enter Security Question</div>
+    </div>
+    </div>
+<br/><br/>
+
+<div class="form-wrapper">
+  <label for="psw"><b>Security Answer</b></label>
+  <input ngModel type="text" placeholder="Enter Security Answer" #secans_laundry = "ngModel" name="secans_laundry" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm.touched && secans_laundry.errors?.required">Please enter Security Answer</div>
+  </div>
+  </div>
+  <button [disabled] = "!userForm.valid" onclick="document.getElementById('id02').style.display='none'" style="width:auto;"value={{valbutton}} >Register</button>
+</div>
+</form>
+</div>
+
+
+
+                               
+<div id="id03" class="modal" >
+
+<form class="modal-content animate" #userForm1="ngForm" (ngSubmit)="onSave_customer(userForm1.value)" novalidate>
+<div class="imgcontainer">
+  <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+</div>
+<h1 style = "color: black;text-align: center;">Customer Registration</h1>
+
+<div class="container">
+
+
+  <div class="form-wrapper">
+  <label for="uname"><b>FirstName</b></label>
+  <input ngModel type="text" placeholder="Enter FirstName" #FirstName = "ngModel" name="FirstName" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm1.touched && FirstName.errors?.required">Please enter FirstName</div>
+  </div>
+  </div>
+
+<div class="form-wrapper">
+  <label for="psw"><b>LastName</b></label>
+  <input ngModel type="text" placeholder="Enter LastName" #LastName = "ngModel" name="LastName" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm1.touched && LastName.errors?.required">Please enter LastName</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Email</b></label>
+  <input ngModel type="text" placeholder="Enter Email" #email_cus = "ngModel" name="email_cus" required>
+<div class = "text-danger">
+    <div *ngIf="userForm1.touched && email_cus.errors?.required">Please enter Email</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="psw"><b>Password</b></label>
+  <input ngModel type="password" placeholder="Enter Password" #password_cus = "ngModel" name="password_cus" required>
+  <br/>
+  <div class = "text-danger">
+    <div *ngIf="userForm1.touched && password_cus.errors?.required">Please enter Password</div>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <label for="psw"><b>Repeat Password</b></label>
+  <input ngModel type="password" placeholder="Enter Confirm Password" #conpassword = "ngModel" name="conpassword" required>
+  <br/>
+  <div class = "text-danger">
+    <div *ngIf="userForm1.touched && conpassword.errors?.required">Please enter Confirm Password</div>
+  </div>
+  </div>
+
+  <div class="form-wrapper">
+  <label for="sec"><b>Security Question</b></label><br/>
+  <select ngModel #secques name="secques">
+      <option value="volvo">What's your pet name?</option>
+      <option value="saab">What's your favourite destination ?</option>
+      <option value="mercedes">What's your favourite dish ? </option>
+    </select>
+    <div class = "text-danger">
+      <div *ngIf="userForm1.touched && secques.errors?.required">Please enter Security Question</div>
+    </div>
+    </div>
+<br/><br/>
+
+<div class="form-wrapper">
+  <label for="secans"><b>Security Answer</b></label>
+  <input ngModel type="text" placeholder="Enter Security Answer" #secans_cus = "ngModel" name="secans_cus" required>
+  <div class = "text-danger">
+    <div *ngIf="userForm1.touched && secans_cus.errors?.required">Please enter Security Answer</div>
+  </div>
+  </div>
+
+<button [disabled] = "!userForm1.valid" onclick="document.getElementById('id03').style.display='none'" style="width:auto;" value={{valbutton}} >Register</button>
+</div>
+</form>
+</div>
+<script>
+  
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+if (event.target == modal) {
+    modal.style.display = "block";
+}
+}
+var modal = document.getElementById('id02');
+window.onclick = function(event) {
+if (event.target == modal) {
+    modal.style.display = "none";
+}
+}
+var modal = document.getElementById('id05');
+window.onclick = function(event) {
+if (event.target == modal) {
+    modal.style.display = "none";
+}
+}
+var modal = document.getElementById('id03');
+window.onclick = function(event) {
+if (event.target == modal) {
+    modal.style.display = "none";
+}
+}
+document.getElementById('timer').innerHTML =
+  003 + ":" + 20;
+startTimer();
+
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  //if(m<0){alert('timer completed')}
+  
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  console.log(m)
+  setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+</script>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+                  
+          <div class="header-right d-none d-lg-block">
+              <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+          </div>
+          <!-- Mobile Menu -->
+          <div class="col-12">
+              <div class="mobile_menu d-block d-lg-none"></div>
+          </div>
+     </div>
+     </div>
+     </header>
+
+<router-outlet></router-outlet>
