@@ -1,0 +1,137 @@
+<div class="modal" id="id02">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="modal-content animate" #changePassword="ngForm" (ngSubmit)="changeadminPassword(changePassword.value)" novalidate>
+    
+      <div class="form-wrapper">
+        <label for="psw"><b>Present Password :</b></label><br/>
+        <input ngModel type="password" placeholder="Enter Present Password"  #presentpassword = "ngModel" name="presentpassword" required>
+        <div class = "text-danger">
+          <div *ngIf="changePassword.touched && presentpassword.errors?.required">Please enter Present Password</div>
+        </div>
+        </div>
+      
+      
+        <div class="form-wrapper">
+        <label for="psw"><b>New Password :</b></label><br/>
+        <input ngModel  type="password" placeholder="Enter newpassword" #newpassword = "ngModel" name="newpassword" required>
+        <div class = "text-danger">
+          <div *ngIf="changePassword.touched && newpassword.errors?.required">Please enter newpassword</div>
+        </div>
+        </div>
+      
+      
+        <div class="form-wrapper">
+        <label for="psw"><b>Confirm Password :</b></label><br/>
+        <input ngModel  type="password" placeholder="Enter Confirm Password" #conpass = "ngModel" name="conpass" required>
+        <div class = "text-danger">
+          <div *ngIf="changePassword.touched && conpass.errors?.required">Please enter Confirm Password</div>
+        </div>
+        </div>
+        <br/>
+    
+        <div style="text-align: center;"> 
+          <button [disabled] = "!changePassword.valid" class="btn btn-danger" >Change Password</button>
+        </div>
+        </form>
+    </div>
+            
+      
+      <!-- Modal footer -->
+      
+      
+    </div>
+  </div>
+</div>
+
+<!-- Stop-->
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">User Details:</h4>
+        <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+                            <p><b>FirstName:</b>{{FirstName}}</p> 
+                             <p><b>LastName:</b>{{LastName}}</p> 
+                             <p><b>CompanyName:</b>{{CompanyName}}</p> 
+                           <p><b>Email:</b>{{Email}}</p> 
+                             <p><b>Address1:</b>{{Add1}}</p> 
+                            <p><b>Address2:</b>{{Add2}}</p> 
+                             <p><b>State:</b>{{State}}</p>
+                              <p><b>Pincode:</b>{{Pincode}}</p>
+                              <p><b>PhoneNumber:</b>{{PhoneNumber}}</p>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div style="text-align: center;color: blue;">
+<button  type="button" onclick = "document.getElementById('id02').style.display='block'" style="width:auto;color:black;">ChangePassword</button>
+</div>
+
+<br/>
+<br/>
+<div class="container">
+   
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Name Of the Company</th>
+          <th scope="col">Company's Email</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Address</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let session of Repdata">
+        <tr class="table-primary">
+          <th scope="row">1</th>
+          <td>{{session.comname}}</td>
+          <td>{{session.email_laundry}}</td>
+          <td>{{session.pnumber}}</td>
+          <td>{{session.state}}</td>
+          <td *ngIf = "session.status == 'InProcess'">
+            <button (click) = "accept(session)" class="btn btn-primary"><i class="far fa-edit" aria-hidden="true"></i></button>
+            <button  (click) = "show(session)"class="btn btn-primary" ><i class="fa fa-eye"></i></button>
+            <button (click) = "delete(session)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+          </td>
+          <td *ngIf = "session.status == 'Accepted'">
+            <h3>Accepted</h3>
+          </td>
+
+
+        </tr>
+       
+       
+      </tbody>
+    </table>
+</div>
+<script>
+  var modal = document.getElementById('id02');
+  window.onclick = function(event) {
+      if (event.target == modal) {
+  modal.style.display = "none";
+}
+}
+</script>
