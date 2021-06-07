@@ -1,1 +1,367 @@
-<p>customer works!</p>
+<br/>
+<br/>
+<head>
+    <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    h1 {
+  color: #333;
+  font-family: arial, sans-serif;
+  margin: 1em auto;
+  width: 80%;
+}
+.tabordion {
+  color: #333;
+  display: block;
+  font-family: arial, sans-serif;
+  margin: auto;
+  position: relative;
+  width: 80%;
+}
+
+.tabordion input[name="sections"] {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.tabordion section {
+  display: block;
+}
+
+.tabordion section label {
+  background:#fff;
+  border:1px solid #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  position: relative;
+  width: 180px;
+  z-index:100;
+}
+
+.tabordion section article {
+  display: none;
+  left: 230px;
+  min-width: 300px;
+  padding: 0 0 0 21px;
+  position: absolute;  
+  top: 0;
+}
+
+.tabordion section article:after {
+  background-color: #fff;
+  bottom: 0;
+  content: "";
+  display: block;
+  left:-229px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  z-index:1;
+}
+
+.tabordion input[name="sections"]:checked + label { 
+  background: #eee;
+  color: #bbb;
+}
+
+.tabordion input[name="sections"]:checked ~ article {
+  display: block;
+}
+
+
+@media (max-width: 533px) {
+  
+  h1 {
+    width: 100%;
+  }
+
+  .tabordion {
+    width: 100%;
+  }
+  
+  .tabordion section label {
+    font-size: 1em;
+    width: 160px;
+  }  
+
+ .tabordion section article {
+    left: 200px;
+    min-width: 270px;
+  } 
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-199px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+
+  }  
+  
+}
+
+@media (max-width: 768px) {
+  h1 {
+    width: 96%;
+  }
+
+  .tabordion {
+    width: 96%;
+  }
+}
+
+
+@media (min-width: 1366px) {
+  h1 {
+    width: 70%;
+  }
+
+  .tabordion {
+    width: 70%;
+  }
+}
+
+
+</style>
+<form  #userForm="ngForm" (ngSubmit)="Prices(userForm.value)" novalidate>
+
+<div>
+  <div class="tabordion">
+
+  <section id="section1">
+    <input type="radio" name="sections" id="option1" checked>
+    <label for="option1">Washing</label>
+<article>
+
+    <div>
+        <h2>Washing</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              
+            </tr>
+          </thead>
+                    <tbody>
+            <tr>
+              <td>Shirt</td>
+              <td><input ngModel type="number" name="wasshirt" #wasshirt = "ngModel"   min="0" required></td>
+
+            </tr>
+            <tr>
+              <td>Tie</td>
+              <td><input ngModel #wastie = "ngModel" type="number" name="wastie" min="0" required></td>
+
+            </tr>
+            <tr>
+              <td>Blazer</td>
+              <td><input ngModel #wasblazer = "ngModel"  type="number" name="wasblazer" min="0" required></td>
+
+            </tr>
+            <tr>
+              <td>Pant</td>
+              <td><input ngModel #waspant = "ngModel" type="number" name="waspant" min="0" required></td>
+
+            </tr>
+            <tr>
+              <td>Jeans</td>
+              <td><input ngModel #wasjeans = "ngModel"  type="number" name="wasjeans" min="0" required></td>
+              
+            </tr>
+            <tr>
+              <td>Suit</td>
+              <td><input ngModel #wassuit = "ngModel" type="number" name="wassuit" min="0" required></td>
+              
+            </tr>
+            <br/>
+          </tbody>
+           
+        </table>
+      </div>
+  
+    </article>
+  
+  </section>
+  <section id="section2">
+    <input type="radio" name="sections" id="option2">
+    <label for="option2">Ironing</label>
+    <article>
+        <div>
+            <h2>Ironing</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Shirt</td>
+                  <td><input ngModel #ironshirt = "ngModel" type="number" name="ironshirt" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Tie</td>
+                  <td><input ngModel #irontie = "ngModel" type="number" name="irontie" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Blazer</td>
+                  <td><input ngModel #ironblazer = "ngModel" type="number" name="ironblazer" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Pant</td>
+                  <td><input ngModel #ironpant = "ngModel" type="number" name="ironpant" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Jeans</td>
+                  <td><input ngModel #ironjeans = "ngModel" type="number" name="ironjeans" min="0" required></td>
+                  
+                </tr>
+                <tr>
+                  <td>Suit</td>
+                  <td><input ngModel #ironsuit = "ngModel" type="number" name="ironsuit" min="0" required></td>
+                  
+                </tr>
+                <br/>
+    
+              </tbody>
+            </table>
+          </div>
+        </article>
+       
+      </section>
+    
+  <section id="section3">
+    <input type="radio" name="sections" id="option3">
+    <label for="option3">Wash & Iron</label>
+    <article>
+        <div>
+            <h2>Wash & Iron</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Shirt</td>
+                  <td><input ngModel #waishi = "ngModel" type="number" name="waishi" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Tie</td>
+                  <td><input ngModel #waitie = "ngModel" type="number" name="waitie" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Blazer</td>
+                  <td><input ngModel #waiblazer = "ngModel" type="number" name="waiblazer" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Pant</td>
+                  <td><input ngModel #waipant = "ngModel" type="number" name="waipant" min="0" required></td>
+    
+                </tr>
+                <tr>
+                  <td>Jeans</td>
+                  <td><input ngModel #waijeans = "ngModel" type="number" name="waijeans" min="0" required></td>
+                  
+                </tr>
+                <tr>
+                  <td>Suit</td>
+                  <td><input ngModel #waisuits = "ngModel" type="number" name="waisuits" min="0" required></td>
+                  
+                </tr>
+                <br/>
+    
+              </tbody>
+            </table>
+          </div>
+        </article>
+       
+      </section>
+      <section id="section4">
+        <input type="radio" name="sections" id="option4">
+        <label for="option4">Dry Cleaning</label>
+        <article>
+            <div>
+                <h2>Dry Cleaning</h2>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Price</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Shirt</td>
+                      <td><input ngModel #dryshirts = "ngModel" type="number" name="dryshirts" min="0" required></td>
+        
+                    </tr>
+                    <tr>
+                      <td>Tie</td>
+                      <td><input ngModel #drytie = "ngModel" type="number" name="drytie" min="0" required></td>
+        
+                    </tr>
+                    <tr>
+                      <td>Blazer</td>
+                      <td><input ngModel #dryblazer = "ngModel" type="number" name="dryblazer"min="0" required></td>
+        
+                    </tr>
+                    <tr>
+                      <td>Pant</td>
+                      <td><input ngModel #drypant = "ngModel" type="number" name="drypant" min="0" required></td>
+        
+                    </tr>
+                    <tr>
+                      <td>Jeans</td>
+                      <td><input ngModel #dryjeans = "ngModel" type="number" name="dryjeans" min="0" required></td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Suit</td>
+                      <td><input ngModel #drysuit = "ngModel" type="number" name="drysuit" min="0" required></td>
+                      
+                    </tr>
+                    <br/>
+        
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+    </div>
+</div>
+<div style = "text-align:right;padding-right: 850px;padding-top: 150px;">
+  <button  [disabled] = "!userForm.valid" >Save</button>
+  
+     
+  </div>
+</form>
+<button (click) = "nav()">Update</button>
+<button (click) = "change()">Change Password</button>
+

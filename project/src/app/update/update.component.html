@@ -1,0 +1,120 @@
+
+
+  <form class="modal-content animate" #userForm="ngForm" (ngSubmit)="update(userForm.value)" novalidate >
+  
+  <h1 style = "color: black;text-align: center;">Laundry </h1>
+  
+  <div class="container">
+  
+    <div class="form-wrapper">
+    <label for="uname"><b>FirstName</b></label>
+    <input ngModel #FirstName_laun = "ngModel" type="text" placeholder="Enter First Name" [(ngModel)] = "user.FirstName_laun" name="FirstName_laun" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && FirstName_laun.errors?.required">Please enter FirstName</div>
+    </div>
+    </div>
+    <div class="form-wrapper">
+    <label for="psw"><b>LastName</b></label>
+    <input ngModel #LastName_laun = "ngModel" type="text" placeholder="Enter Last Name" [(ngModel)] = "user.LastName_laun"name="LastName_laun" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && LastName_laun.errors?.required">Please enter lastName</div>
+    </div>
+    </div>
+  
+    <div class="form-wrapper">
+    <label for="psw"><b>Company Name</b></label>
+    <input ngModel #comname = "ngModel" type="text" placeholder="Enter Company Name" [(ngModel)] = "user.comname" name="comname" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && comname.errors?.required">Please enter CompanyName</div>
+    </div>
+    </div>
+  
+  
+    <div class="form-wrapper">
+    <label for="psw"><b>Email</b></label>
+    <input ngModel  type="text" placeholder="Enter Email" #email_laundry = "ngModel"[(ngModel)] = "user.email_laundry" name="email_laundry" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && email_laundry.errors?.required">Please enter Email</div>
+    </div>
+    </div>
+  
+  
+    <div class="form-wrapper">
+    <label for="psw"><b>Phone Number</b></label>
+    <input ngModel #pnumber = "ngModel" type="text" placeholder="Enter Phone Number"[(ngModel)] = "user.pnumber" name="pnumber" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && pnumber.errors?.required">Please enter PhoneNumber</div>
+    </div>
+    </div>
+  
+    <div class="form-wrapper">
+    <label for="psw"><b>State</b></label><br/>
+    <select ngModel #state = "ngModel" [(ngModel)] = "user.state" name="state" id="state">
+        <option value="Telangana">Telangana</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="TamilNadu">TamilNadu</option>
+      </select>
+      <div class = "text-danger">
+        <div *ngIf="userForm.touched && state.errors?.required">Please enter state</div>
+      </div>
+    </div>
+  <br/><br/>
+  
+  <div class="form-wrapper">
+    <label for="psw"><b>Address1</b></label>
+    <input ngModel #add1 = "ngModel" id = "add1" type="text" placeholder="Enter Address1" [(ngModel)] = "user.add1"name="add1" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && add1.errors?.required">Please enter Address</div>
+    </div>
+    </div>
+  
+    <div class="form-wrapper">
+    <label for="psw"><b>Address2</b></label>
+    <input ngModel #add2 = "ngModel" id = "add2" type="text" placeholder="Enter Address2" [(ngModel)] = "user.add2"name="add2" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && add2.errors?.required">Please enter Address</div>
+    </div>
+    </div>
+  
+    <div class="form-wrapper">
+    <label for="psw"><b>District</b></label><br/>
+    <select ngModel #district = "ngModel" [(ngModel)] = "user.district"name="district" id="district">
+        <option value="Adilabad">Adilabad</option>
+        <option value="Medak">Medak</option>
+        <option value="Siddipet">Siddipet</option>
+      </select>
+      <div class = "text-danger">
+        <div *ngIf="userForm.touched && district.errors?.required">Please enter district</div>
+      </div>
+      </div>
+  <br/><br/>
+  
+  
+  <div class="form-wrapper">
+    <label for="psw"><b>Pincode</b></label>
+    <input ngModel #pincode = "ngModel" type="text" placeholder="Enter Pincode" [(ngModel)] = "user.pincode"name="pincode" required>
+    </div>
+    <div class="form-wrapper">
+    <label for="sec"><b>Security Question</b></label><br/>
+    <select ngModel #secques_laun = "ngModel" [(ngModel)] = "user.secques_laun" name="secques_laun" >
+        <option value="What's your pet name?">What's your pet name?</option>
+        <option value="What's your favourite destination ?">What's your favourite destination ?</option>
+        <option value="What's your favourite dish ?">What's your favourite dish ?</option>
+      </select>
+      <div class = "text-danger">
+        <div *ngIf="userForm.touched && secques_laun.errors?.required">Please enter Security Question</div>
+      </div>
+      </div>
+  <br/><br/>
+  
+  <div class="form-wrapper">
+    <label for="psw"><b>Security Answer</b></label>
+    <input ngModel type="text" placeholder="Enter Security Answer" #secans_laundry = "ngModel" [(ngModel)] = "user.secans_laundry" name="secans_laundry" required>
+    <div class = "text-danger">
+      <div *ngIf="userForm.touched && secans_laundry.errors?.required">Please enter Security Answer</div>
+    </div>
+    </div>
+    <button [disabled] = "!userForm.valid" onclick="document.getElementById('id13').style.display='none'" style="width:auto;" >Register</button>
+  </div>
+  </form>
+  

@@ -173,6 +173,17 @@ app.post("/api/isPresent", function (req, res) {
   });
 })
 
+app.post("/api/getDetails", function (req, res) {
+  model.findOne({_id:req.body.id}, function (err, data) {
+    console.log(data);
+    if (data) {
+      res.send({
+        data
+      });
+    } 
+  });
+})
+
 app.post("/api/islogin", function (req, res) {
   model.find({email_laundry:req.body.email,password:req.body.password,secques_laun:req.body.secques,secans_laundry:req.body.secans }, function (err, data) {
     console.log(data);

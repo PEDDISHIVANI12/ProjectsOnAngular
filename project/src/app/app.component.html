@@ -261,7 +261,7 @@ span.psw {
   </div>
   </div>
 
-  <button [disabled] = "!userForm_login.valid" >Login</button>
+  <button onclick="document.getElementById('id01').style.display='none'" style="width:auto;color: black;" [disabled] = "!userForm_login.valid" >Login</button>
   
 </div>
 <div class="container" style="background-color:#f1f1f1;text-align: center;">
@@ -410,9 +410,9 @@ span.psw {
   <div class="form-wrapper">
   <label for="psw"><b>State</b></label><br/>
   <select ngModel #state = "ngModel" name="state" id="state">
-      <option value="ts">Telangana</option>
-      <option value="ap">Andhra Pradesh</option>
-      <option value="tamil">TamilNadu</option>
+      <option value="Telangana">Telangana</option>
+      <option value="Andhra Pradesh">Andhra Pradesh</option>
+      <option value="TamilNadu">TamilNadu</option>
     </select>
     <div class = "text-danger">
       <div *ngIf="userForm.touched && state.errors?.required">Please enter state</div>
@@ -439,9 +439,9 @@ span.psw {
   <div class="form-wrapper">
   <label for="psw"><b>District</b></label><br/>
   <select ngModel #district = "ngModel" name="district" id="district">
-      <option value="adi">Adilabad</option>
-      <option value="med">Medak</option>
-      <option value="Sidd">Siddipet </option>
+      <option value="Adilabad">Adilabad</option>
+      <option value="Medak">Medak</option>
+      <option value="Siddipet">Siddipet</option>
     </select>
     <div class = "text-danger">
       <div *ngIf="userForm.touched && district.errors?.required">Please enter district</div>
@@ -457,9 +457,9 @@ span.psw {
   <div class="form-wrapper">
   <label for="sec"><b>Security Question</b></label><br/>
   <select ngModel #secques_laun = "ngModel" name="secques_laun" >
-      <option value="volvo">What's your pet name?</option>
-      <option value="saab">What's your favourite destination ?</option>
-      <option value="mercedes">What's your favourite dish ? </option>
+      <option value="What's your pet name?">What's your pet name?</option>
+      <option value="What's your favourite destination ?">What's your favourite destination ?</option>
+      <option value="What's your favourite dish ?">What's your favourite dish ?</option>
     </select>
     <div class = "text-danger">
       <div *ngIf="userForm.touched && secques.errors?.required">Please enter Security Question</div>
@@ -538,9 +538,9 @@ span.psw {
   <div class="form-wrapper">
   <label for="sec"><b>Security Question</b></label><br/>
   <select ngModel #secques name="secques">
-      <option value="volvo">What's your pet name?</option>
-      <option value="saab">What's your favourite destination ?</option>
-      <option value="mercedes">What's your favourite dish ? </option>
+      <option value="What's your pet name?">What's your pet name?</option>
+      <option value="What's your favourite destination ?">What's your favourite destination ?</option>
+      <option value="What's your favourite dish ?">What's your favourite dish ? </option>
     </select>
     <div class = "text-danger">
       <div *ngIf="userForm1.touched && secques.errors?.required">Please enter Security Question</div>

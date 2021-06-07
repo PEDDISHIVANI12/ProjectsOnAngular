@@ -8,16 +8,55 @@ import 'rxjs/add/operator/do';
   providedIn: 'root'
 })
 export class CommonService {
+  setuser: any;
+  getdata: any;
+  paid: any;
+  details: any;
+  getdetails: any;
+  laundid: any;
   constructor(private http: Http) { }
   
   saveUser(user: any) {
     return this.http.post('http://localhost:8082/api/SaveUser/', user).map((response: Response) => response.json());
   }
 
+ sendlaundryId(data:any){
+   this.laundid = data;
+ }
+ getlaundryId(){
+  return this.laundid;
+}
+
+  
+  sendDetails(data:any){
+    this.details = data;
+  }
+  getDetails1(){
+    return this.details;
+  }
+  sendorder(data:any){
+    this.getdetails = data;
+  }
+  getorder(){
+    return this.getdetails;
+  }
+  Payment(user: any) {
+    return this.http.post('http://localhost:8091/api/Payment/', user).map((response: Response) => response.json());
+  }
+
   saveUser_customer(user: any) {
     return this.http.post('http://localhost:8081/api/SaveUser_customer/', user).map((response: Response) => response.json());
   }
-
+  savePrices(prices:any){
+    return this.http.post('http://localhost:8083/api/SavePrices/', prices).map((response: Response) => response.json());
+  }
+  getPrices(id:any){
+    return this.http.post('http://localhost:8083/api/getPrices/', { 'id': id }).map((response: Response) => response.json());
+  }
+  updatePrices(prices:any){
+    return this.http.post('http://localhost:8083/api/UpdateUser/',prices)
+      .map((response: Response) => response.json());
+  }
   deleteUser(id: any) {
     return this.http.post('http://localhost:8082/api/deleteUser/', { 'id': id })
       .map((response: Response) => response.json());
@@ -38,12 +77,18 @@ export class CommonService {
       .map((response: Response) => response.json());
   }
 
+  getDetails(data:any){
+    return this.http.post('http://localhost:8081/api/isPresent/',{'id':data})
+      .map((response: Response) => response.json());
+  }
+
   UpdateUser(data:any) {
     console.log(data);
     return this.http.post('http://localhost:8082/api/UpdateUser/',data)
       .map((response: Response) => response.json());
 
   }
+  
 
   UpdateUser_Customer(data:any) {
     console.log(data);
@@ -65,7 +110,14 @@ export class CommonService {
       .map((response: Response) => response.json());
 
   }
+  
+  setUserId(user:any){
+    this.setuser = user;
+  }
 
+  getUserId(){
+    return this.setuser;
+  }
 
   GetUser_customer() {
     return this.http.get('http://localhost:8081/api/getUser_customer/')

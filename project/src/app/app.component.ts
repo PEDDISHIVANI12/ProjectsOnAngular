@@ -39,6 +39,8 @@ export class AppComponent implements OnInit{
   conversionDecryptOutput: any;
   conversionEncryptOutput: any;
   encryptSecretKey!: string;
+  laundrycounting = 0;
+  customercounting = 0;
   private subscription!: Subscription;
 	@Output() TimerExpired: EventEmitter<any> = new EventEmitter<any>();
 
@@ -252,33 +254,38 @@ generateOTP() {
 login(user_login:any){
   this.newService.login(user_login)
     .subscribe(data => {
-   // alert(data.data);
-   // this.router.navigate(["Laundry"]);
    console.log(data.data[0]);
-   if (data.data[0] != "undefined"){
-     this.logincounting = this.logincounting + 1;
-     this.router.navigate(["Laundry"]);
+   if (typeof(data.data[0]) !== "undefined"){
+     //this.laundrycounting = this.laundrycounting + 1;
+     this.newService.setUserId(data.data[0]);
+    // this.newService.sendDetails(data.data);
+     this.router.navigate(["Customer"]);
+    
    }
-  // this.Laucount = this.LauCount + 1;
-    this.ngOnInit();
   }
     , error => this.errorMessage = error)
 
   this.newService.loginCustomer(user_login)
     .subscribe(data => {
-    //alert(data.data);
     console.log(data.data[0]);
-    if (data.data[0] != "undefined"){
-      this.logincounting = this.logincounting + 1;
-      this.router.navigate(["Customer"]);
+    if (typeof(data.data[0]) !== "undefined"){
+      //this.customercounting = this.customercounting + 1;
+     this.newService.setUserId(data.data[0]);
+     //this.newService.sendDetails(data.data);
+     this.router.navigate(["Laundry"]);
     }
-    this.ngOnInit();
   }
     , error => this.errorMessage = error)
-    if(this.logincounting == 0){
-      alert("Invalid");
+    
+   /**  if (this.laundrycounting > 1){
+      this.router.navigate(["Customer"]);
     }
-  
+    else if(this.customercounting > 1){
+      this.router.navigate(["Laundry"])
+    }
+    else{
+      alert("Invalid")
+    }**/
 
 }
 
@@ -288,7 +295,4 @@ login(user_login:any){
   
 }
 
-function ngOnDestroy() {
-  throw new Error('Function not implemented.');
-}
 
