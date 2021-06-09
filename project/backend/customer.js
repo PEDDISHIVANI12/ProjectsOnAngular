@@ -42,6 +42,9 @@ var UsersSchema = new Schema({
   email_cus: {
     type: String,
   },
+  date:{
+    type: Date,
+  },
   password_cus: {
     type: String,
   },
@@ -110,6 +113,28 @@ app.post("/api/islogin", function (req, res) {
         data
       });
     } 
+  });
+})
+
+app.post("/api/UpdateUser", function (req, res) {
+  model.findByIdAndUpdate(req.body._id, {
+    FirstName: req.body.FirstName,
+    LastName: req.body.LastName,
+    email_cus:req.body.email_cus,
+    date: req.body.date,
+    password_cus:req.body.password_cus,
+    secans_cus:req.body.secans_cus,
+    secques:req.body.secques,
+  },
+  function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({
+        data: "Your profile has been updated!"
+      });
+      console.log(req.body);
+    }
   });
 })
 

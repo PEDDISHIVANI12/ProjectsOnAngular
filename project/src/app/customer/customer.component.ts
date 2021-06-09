@@ -11,37 +11,36 @@ export class CustomerComponent implements OnInit {
   errorMessage: any;
 
   constructor(private newService:CommonService,private router:Router) { }
-  valbutton ="Save";
+  valbutton:any;
   user:any;
-
+  users :any;
   ngOnInit(): void {
-    this.user = this.newService.getUserId();
+    this.user = this.newService.getUserId()._id;
+    this.newService.getPrices(this.user)
+    .subscribe((data:any) => {
+      this.users = data.data;
+      this.valbutton = this.users.status;
+      console.log(this.users);
+    }
+      , (error: any) => this.errorMessage = error)
   }
-  nav(){
-    this.router.navigate(['Update']);
-  }
-  change(){
-    this.router.navigate(['change']);
-  }
+ 
 
   Prices(prices:any){
+    console.log(this.users);
+    prices._id = this.users.data._id;
+    prices.status = "Update";
+    this.valbutton = prices.status;
     prices.laund_id = this.newService.getUserId()._id;
-    this.newService.savePrices(prices)
-      .subscribe((data:any) => {
-        console.log(prices);
-        alert(data.data);
-        this.ngOnInit();
-      }
-        , (error: any) => this.errorMessage = error)
-    //this.valbutton = "Update"
-  }
-  update(data:any){
-    this.newService.UpdateUser(data)
+    console.log(prices);
+    this.newService.updatePrices(prices)
       .subscribe((data:any) => {
         console.log(data);
         alert(data.data);
-        this.ngOnInit();
+        //this.ngOnInit();
       }
         , (error: any) => this.errorMessage = error)
   }
+    //this.valbutton = "Update"
+  
 }

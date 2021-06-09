@@ -18,6 +18,7 @@ import { YourordersComponent } from './yourorders/yourorders.component';
 import { UpdateComponent } from './update/update.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { Add2cartComponent } from './add2cart/add2cart.component';
+import { SafehtmlPipe } from './safehtml.pipe';
 
 
 const appRoot: Routes = [
@@ -43,6 +44,7 @@ const appRoot: Routes = [
     UpdateComponent,
     ChangepasswordComponent,
     Add2cartComponent,
+    SafehtmlPipe,
   ],
   imports: [
     BrowserModule,

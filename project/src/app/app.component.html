@@ -194,6 +194,7 @@ span.psw {
 </head>
 <header>
   <!-- Header Start -->
+  <div *ngIf = "home">
   <div class="header-area">
       <div class="main-header header-sticky">
           <!-- Logo -->
@@ -244,14 +245,18 @@ span.psw {
   </div>  
 </div>
 
-
+<div class="form-wrapper">
   <label for="psw"><b>Security Question</b></label><br/>
-  <select ngModel #secques = "ngModel" name="secques" id="sec">
+  <select ngModel #secques = "ngModel" name="secques" id="sec" required>
       <option value="What's your pet name?">What's your pet name?</option>
       <option value="What's your favourite destination ?">What's your favourite destination ?</option>
       <option value="What's your favourite dish ?">What's your favourite dish ? </option>
     </select>
+    <div class = "text-danger">
+      <div *ngIf="userForm_login.touched && secques.errors?.required">Please enter security Question</div>
+    </div>
   <br/><br/>
+  </div>
 
   <div class="form-wrapper">
   <label for="psw"><b>Security Answer</b></label>
@@ -409,7 +414,7 @@ span.psw {
 
   <div class="form-wrapper">
   <label for="psw"><b>State</b></label><br/>
-  <select ngModel #state = "ngModel" name="state" id="state">
+  <select ngModel #state = "ngModel" name="state" id="state" required>
       <option value="Telangana">Telangana</option>
       <option value="Andhra Pradesh">Andhra Pradesh</option>
       <option value="TamilNadu">TamilNadu</option>
@@ -614,9 +619,7 @@ function checkSecond(sec) {
 </nav>
 </div>
 </div>
-</div>
-
-                  
+</div>   
           <div class="header-right d-none d-lg-block">
               <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
           </div>
@@ -626,6 +629,90 @@ function checkSecond(sec) {
           </div>
      </div>
      </div>
+    </div>
+
+
+     <div *ngIf = "laundry">
+      <div class="header-area">
+        <div class="main-header header-sticky">
+            <!-- Logo -->
+            <div class="header-left">
+                <div class="logo">
+                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                </div>
+                <div class="menu-wrapper  d-flex align-items-center">
+                    <!-- Main-menu -->
+                    <div class="main-menu d-none d-lg-block">
+                        <nav> 
+                            <ul id="navigation">                                                                                          
+                                <li><a (click) = "Profile()">Profile</a></li>
+                                <li><a (click) = "change()">Change Password</a></li>
+                                <li><a (click) = "Orders()">Orders</a></li>
+                                <li><a (click) = "Prices()">Prices</a></li>
+                                <li><a (click) = "logout()">Logout</a></li>
+                             </ul>
+                        </nav>
+                      </div>
+                    </div>
+                    </div>
+            <div class="header-right d-none d-lg-block">
+                <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+      
+       </div>
+       </div>
+      </div>
+
+
+      <div *ngIf = "customer">
+       <div class="header-area">
+        <div class="main-header header-sticky">
+            <!-- Logo -->
+            <div class="header-left">
+                <div class="logo">
+                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                </div>
+                <div class="menu-wrapper  d-flex align-items-center">
+                    <!-- Main-menu -->
+                    <div class="main-menu d-none d-lg-block">
+                        <nav> 
+                            <ul id="navigation">                                                                                          
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="blog.html">Blog</a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog_details.html">Blog Details</a></li>
+                                        <li><a href="elements.html">Element</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
+                                 
+      </ul>
+      </nav>
+    
+      
+                    
+            <div class="header-right d-none d-lg-block">
+                <a href="#" class="header-btn1"><img src="assets/img/icon/call.png" alt=""> (08) 728 256 266</a>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+       </div>
+       </div>
+       </div>
+       </div>
+       </div>
+      </div>
      </header>
 
 <router-outlet></router-outlet>
+

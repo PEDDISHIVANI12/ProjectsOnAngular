@@ -86,6 +86,9 @@ var UsersSchema = new Schema({
   password:{
     type:String
   },
+  LaundryPic:{
+    type:String
+  },
 
 }, {
   versionKey: false
@@ -138,7 +141,9 @@ app.post("/api/UpdateUser", function (req, res) {
     status:req.body.status,
     pincode:req.body.pincode,
     comname:req.body.comname,
-    pnumber:req.body.pnumber
+    pnumber:req.body.pnumber,
+    LaundryPic:req.body.LaundryPic,
+
   },
   function (err, data) {
     if (err) {

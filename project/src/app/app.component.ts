@@ -15,8 +15,10 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  pricesdata = {'wasshirt':0,'wastie':0,'wasblazer':0,'waspant':0,'wasjeans':0,'wassuit':0,'ironshirt':0,'irontie':0,'ironblazer':0,'ironpant':0,'ironjeans':0,
+  'ironsuit':0,'waishi':0,'waitie':0,'waiblazer':0,'waipant':0,'waijeans':0,'waisuits':0,'dryshirts':0,'drytie':0,'dryblazer':0,'drypant':0,'dryjeans':0,'drysuit':0,'status':'Save'};
   [x: string]: any;
-  title = 'project';
+  title = 'project'
   errorMessage: any;
   FirstName_laun:any;
   logincounting = 0;
@@ -33,6 +35,9 @@ export class AppComponent implements OnInit{
   secques_laun:any;
   secques:any;
   password:any;
+  laundry:boolean = false;
+  customer:boolean = false;
+  home:boolean = true;
   conpassword:any;
   secans_cus:any;
   Repdata1: any;
@@ -71,8 +76,7 @@ export class AppComponent implements OnInit{
   unshow:boolean = false;
   
   ngOnInit() {
-    this.newService.GetUser_customer();
-    this.newService.GetUser();
+    
 
     this.subscription = this.everySecond.subscribe((seconds) => {
 			var currentTime: moment.Moment = moment();
@@ -168,7 +172,27 @@ export class AppComponent implements OnInit{
     }
   }
 
-  
+  selectFile(event:any){
+    var files = event.target.files;
+    var file = require("../assets/img/gallery/laundry.jpg") ;
+
+
+  if (this.files && this.file) {
+      var reader = new FileReader();
+
+      reader.onload =this.handleFile.bind(this);
+
+      reader.readAsBinaryString(file);
+  }
+}
+
+
+
+handleFile(event:any) {
+   var binaryString = event.target.result;
+   this.base64textString= btoa(binaryString);
+   console.log(btoa(binaryString));
+  }
 
 
 
@@ -176,7 +200,8 @@ export class AppComponent implements OnInit{
    // user.secques = CryptoJS.AES.encrypt(this.plainText, user.secques).toString();
     //user.secans = CryptoJS.AES.encrypt(this.plainText, user.secans).toString();
     user.mode = this.valbutton;
-    user.status = "InProcess"
+    user.LaundryPic = this.base64textString;
+    user.status = "InProcess";
     console.log(user);
     this.newService.saveUser(user)
       .subscribe((data:any) => {
@@ -184,6 +209,12 @@ export class AppComponent implements OnInit{
         this.ngOnInit();
       }
         , (error: any) => this.errorMessage = error)
+        this.newService.savePrices(this.pricesdata)
+        .subscribe((data:any) => {
+          alert(data.data);
+          this.ngOnInit();
+        }
+          , (error: any) => this.errorMessage = error)
 
   }
   
@@ -259,8 +290,11 @@ login(user_login:any){
      //this.laundrycounting = this.laundrycounting + 1;
      this.newService.setUserId(data.data[0]);
     // this.newService.sendDetails(data.data);
+     this.laundry = true;
+     this.home= false;
+     console.log(this.laundry);
+     console.log(this.home);
      this.router.navigate(["Customer"]);
-    
    }
   }
     , error => this.errorMessage = error)
@@ -271,6 +305,14 @@ login(user_login:any){
     if (typeof(data.data[0]) !== "undefined"){
       //this.customercounting = this.customercounting + 1;
      this.newService.setUserId(data.data[0]);
+     data.data[0].date = new Date();
+     this.newService.UpdateUser_Customer(data.data[0])
+      .subscribe((data:any) => {
+        alert(data.data);
+        this.ngOnInit();
+      }
+        , (error: any) => this.errorMessage = error)
+
      //this.newService.sendDetails(data.data);
      this.router.navigate(["Laundry"]);
     }
@@ -288,7 +330,24 @@ login(user_login:any){
     }**/
 
 }
-
+Profile(){
+  this.router.navigate(['Update']);
+}
+change(){
+  this.router.navigate(['change']);
+}
+Orders(){
+  this.router.navigate(['Customer']);
+}
+Prices(){
+  this.router.navigate(['Customers']);
+}
+logout(){
+  this.home = true;
+  this.laundry = false;
+  this.customer = false;
+  this.router.navigate(['']);
+}
   
   
  

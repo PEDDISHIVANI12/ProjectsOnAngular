@@ -26,10 +26,12 @@ export class LaundryComponent implements OnInit {
   votes: number = 1;
   constructor(private newService: CommonService,private router: Router) { }
 
-  ngOnInit(): void {
-    this.newService.GetUser().subscribe((data : any) => {
-      this.carts = data;
-    });   
+  ngOnInit(){
+    this.newService.GetUser()
+      .subscribe((data:any) => {
+        this.carts = data;
+      }
+        , (error: any) => this.errorMessage = error)
   }
   addtocart(Type:any,Item:any,price:any){
     let myData = new Array<any>();
@@ -65,12 +67,9 @@ export class LaundryComponent implements OnInit {
   }
   getprices(cart:any){
     this.newService.sendlaundryId(cart._id);
-    this.newService.getPrices(cart)
-    .subscribe(data => {
-    console.log(data.data);
-    this.getresult = data.data;
-  }
-    , error => this.errorMessage = error)
+    //this.newService.gettingPrices(cart);
+    this.router.navigate(['add2cart']);
+   
 
   }
   removing(data:any){

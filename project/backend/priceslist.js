@@ -114,6 +114,9 @@ var UsersSchema = new Schema({
   drysuit:{
     type: Number
   },
+  status:{
+    type: String
+  },
 
 }, {
   versionKey: false
@@ -163,6 +166,7 @@ app.post("/api/UpdateUser", function (req, res) {
     drypant:req.body.drypant,
     dryjeans:req.body.dryjeans,
     drysuit:req.body.drysuit,
+    status:req.body.status,
   },
   function (err, data) {
     if (err) {
