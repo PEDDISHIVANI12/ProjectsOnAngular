@@ -12,6 +12,7 @@
       box-sizing: border-box;
     }
     
+
     .row {
       display: -ms-flexbox; /* IE10 */
       display: flex;
@@ -143,6 +144,15 @@
                     <div *ngIf="userForm1.touched && address.errors?.required">Please enter Address</div>
                   </div>
                 </div>
+                <div class="form-wrapper">
+                  <label for="adr"><i class="fa fa-address-card-o"></i> PhoneNumber</label>
+                  <input ngModel type="text" placeholder="Enter Phone Number" #pnumber = "ngModel" name="pnumber" required>
+                  <br/>
+                  <div class = "text-danger">
+                    <div *ngIf="userForm1.touched && pnumber.errors?.required">Please enter PhoneNumber</div>
+                  </div>
+                </div>
+
 
                 <div class="form-wrapper">
                   <label for="city"><i class="fa fa-institution"></i> City</label>
@@ -164,6 +174,8 @@
                       </div>
                     </div>
                   </div>
+
+                 
                  
 
                   <div class="col-50">
@@ -198,16 +210,20 @@
                       </div>
                     </div>
                   </div>
+                 <br/>
+                 <br/>
+                
+                 <br/>
+                  <select name = "select"[(ngModel)] = "select">
+                    <option selected value="pay" >Pay On Delievery</option>
+                    <option value="paycard" >Payment through Card</option>                
+                  </select>
+
                  
-                 
-                  <input type="radio" id="paycash" name="pashcash" value="paycash">
-                  <label (click) = "paycash()"for="paycash">Pay On Delievery</label><br>
-                  <input (click) = "paycard()" type="radio" id="paycard" name="paycard" value="paycard">
-                  <label for="paycard">Payment through Card</label><br>
                 </div>
               </div>
     
-              <div class="col-50" *ngIf = "show">
+              <div class="col-50" *ngIf = "select == 'paycard'">
                 <h3>Payment</h3>
                 <label for="fname">Accepted Cards</label>
                 <div class="icon-container">
@@ -268,9 +284,7 @@
               </div>
             </div>
             
-            <label>
-              <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-            </label>
+           <br/>
             <button [disabled] = "!userForm1.valid" >Continue to Check Out</button>
           </form>
         </div>
@@ -278,10 +292,22 @@
       <div class="col-25">
         <div class="container">
           <h4>Cart <span class="price" style="color:black"></span></h4>
-          <hr>
-          <div *ngFor = "let data of orders">
-          <p>{{data[0]}}:{{data[1]}}<span class="price">{{data[2] * data[3]}}</span></p>
-          </div>
+          <hr/>
+          <table>
+            <tr>
+              <th>Service</th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Prices</th>
+
+            </tr>
+            <tr *ngFor = "let data of orders">
+              <td>{{data[0]}}</td>
+              <td>{{data[1]}}</td>
+              <td>{{data[2]}}</td>
+              <td>{{data[2] * data[3]}}</td>
+            </tr>
+          </table>
           <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
         </div>
       </div>

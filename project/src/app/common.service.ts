@@ -14,6 +14,9 @@ export class CommonService {
   details: any;
   getdetails: any;
   laundid: any;
+  cartitems: any = [];
+  orders: any;
+  name: any;
   constructor(private http: Http) { }
   
   saveUser(user: any) {
@@ -23,9 +26,27 @@ export class CommonService {
  sendlaundryId(data:any){
    this.laundid = data;
  }
+ sendLaundryOrders(data:any){
+  this.orders = data;
+}
+sendlaundryname(name:any){
+  this.name = name;
+}
+getlaundryname(){
+  return this.name;
+}
+getLaundryOrders(){
+  return this.laundid;
+}
  getlaundryId(){
   return this.laundid;
 }
+  sendCartItems(data:any){
+    this.cartitems = data;
+  }
+  getCartItems(){
+    return this.cartitems;
+  }
 
   
   sendDetails(data:any){
@@ -88,6 +109,12 @@ export class CommonService {
       .map((response: Response) => response.json());
 
   }
+  UpdateUserPayment(data:any) {
+    console.log(data);
+    return this.http.post('http://localhost:8091/api/UpdatePayment/',data)
+      .map((response: Response) => response.json());
+
+  }
   
 
   UpdateUser_Customer(data:any) {
@@ -117,6 +144,11 @@ export class CommonService {
 
   getUserId(){
     return this.setuser;
+  }
+
+  GetUser_payment() {
+    return this.http.get('http://localhost:8091/api/getUser/')
+      .map((response: Response) => response.json());
   }
 
   GetUser_customer() {

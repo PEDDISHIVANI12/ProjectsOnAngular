@@ -67,6 +67,8 @@ export class LaundryComponent implements OnInit {
   }
   getprices(cart:any){
     this.newService.sendlaundryId(cart._id);
+    this.newService.sendlaundryname(cart.comname);
+    console.log(cart._id);
     //this.newService.gettingPrices(cart);
     this.router.navigate(['add2cart']);
    
@@ -104,21 +106,7 @@ export class LaundryComponent implements OnInit {
       this.display = false;
     }
 
-    checkout(){
-      this.getlen = this.totalData.length;
-      if (this.getlen == 0){
-        this.get = true;
-    }
-      else{
-        this.get = false;
-    }
-    }
+   
   
-  movetopayment(){
-   // this.newService.setpaid(paid);
-    this.newService.sendorder(this.totalData);
-    this.router.navigate(["Payment"]);
-  }
-
 }
 

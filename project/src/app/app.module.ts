@@ -26,9 +26,11 @@ const appRoot: Routes = [
   {path: 'Laundry', component: LaundryComponent},
   {path: 'Customer', component: CustomerComponent},
   {path: 'Payment', component: PaymentComponent},
+  {path: 'Customer-list', component: CustomerListComponent},
   {path: 'Update', component: UpdateComponent},
   {path: 'change', component: ChangepasswordComponent},
   {path: 'add2cart', component: Add2cartComponent},
+  {path: 'yourorders', component: YourordersComponent},
 
 
 ]

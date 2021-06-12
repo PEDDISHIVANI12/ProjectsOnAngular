@@ -7,6 +7,9 @@ import { Subscription, Observable, timer } from 'rxjs';
 import * as moment from 'moment';
 import { ContactService } from './contact.service';
 import { Validators } from '@angular/forms';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+//import { Add2cartComponent } from './add2cart/add2cart.component';
 //import { ConsoleReporter } from 'jasmine';
 
 @Component({
@@ -15,8 +18,17 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  
+ 
+  
   pricesdata = {'wasshirt':0,'wastie':0,'wasblazer':0,'waspant':0,'wasjeans':0,'wassuit':0,'ironshirt':0,'irontie':0,'ironblazer':0,'ironpant':0,'ironjeans':0,
   'ironsuit':0,'waishi':0,'waitie':0,'waiblazer':0,'waipant':0,'waijeans':0,'waisuits':0,'dryshirts':0,'drytie':0,'dryblazer':0,'drypant':0,'dryjeans':0,'drysuit':0,'status':'Save'};
+  //totalData: any;
+  //getlen: any = 0;
+  public static totalData: any = 0;
+  public static getlen: any;
+  //private static newService: CommonService;
+ // private static newService: CommonService;
   [x: string]: any;
   title = 'project'
   errorMessage: any;
@@ -33,6 +45,8 @@ export class AppComponent implements OnInit{
   email_forgot:any;
   email_laundry:any;
   secques_laun:any;
+  totaldata1:any;
+ // totalData:any;
   secques:any;
   password:any;
   laundry:boolean = false;
@@ -45,7 +59,9 @@ export class AppComponent implements OnInit{
   conversionEncryptOutput: any;
   encryptSecretKey!: string;
   laundrycounting = 0;
+  get:boolean = false;
   customercounting = 0;
+  value:any
   private subscription!: Subscription;
 	@Output() TimerExpired: EventEmitter<any> = new EventEmitter<any>();
 
@@ -56,28 +72,32 @@ export class AppComponent implements OnInit{
 	remainingTime: any;
 	minutes: any;
 	seconds: any;
-
+ // backendService:any;
 	everySecond: Observable<number> = timer(0, 1000);
-
-
+ // private newone!: CommonService;
+  
 
   constructor(private contactService:ContactService,private newService: CommonService,private router:Router,private enService: EncryptionService,private ref: ChangeDetectorRef) {
     this.searchEndDate = this.SearchDate.add(this.ElapsTime, "minutes");
+   // this.newService = newService;
    }
+  getlen1:any = 0;
   Repdata: any;
   sendemail:any;
   valbutton = 'Save';
-  password:any;
   OTP : any;
-  conpassword : any;
   timerOn : boolean = true;
   test : boolean | undefined;
   show:boolean = true;
   unshow:boolean = false;
   
-  ngOnInit() {
-    
 
+  ngOnInit() {
+    console.log(this.newService.getCartItems());
+    //this.getlen1 = 0;
+    this.totalData = this.newService.getCartItems();
+    this.getlen = this.totalData.length;
+  
     this.subscription = this.everySecond.subscribe((seconds) => {
 			var currentTime: moment.Moment = moment();
 			this.remainingTime = this.searchEndDate.diff(currentTime)
@@ -96,18 +116,16 @@ export class AppComponent implements OnInit{
 			}
 			this.ref.markForCheck();
 		})
-    
+    //this.gettingcart();
 	
     this.userRegistrationForm = this.fb.group({
       name: ["", Validators.required],
       email: ["",Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]
     });
-  }
-  ngOnDestroy():void {
-    this.subscription.unsubscribe();
+    //this.gettingcart();
+    
   }
   
-
 
   useEmail(OTP:any,email:any){
     let user = {
@@ -126,6 +144,21 @@ export class AppComponent implements OnInit{
        
     );
   }
+
+  get staticUrlArray() {
+    return AppComponent.getlen;
+  }
+
+  public static gettingcart(_newService:CommonService,_getlen1:any){
+    console.log(_newService.getCartItems());
+    AppComponent.totalData = _newService.getCartItems();
+    console.log(AppComponent.totalData);
+    AppComponent.getlen = _newService.getCartItems().length;
+   // getlen = _getlen1;
+    //public static int getlen1 = this.totalData.length;
+    //return this.totalData.length;
+  }
+  
   
   isValidEmail(session:any){
     console.log(session);
@@ -170,6 +203,10 @@ export class AppComponent implements OnInit{
     else{
       alert("no");
     }
+  }
+  public static closinglen(){
+    AppComponent.getlen = 0;
+    AppComponent.totalData = [];
   }
 
   selectFile(event:any){
@@ -250,22 +287,22 @@ forgot(session:any){
     if (this.Lcount > 0){
       this.wholeObject.data.password = session.chpassword;
       this.newService.UpdateUser(this.wholeObject.data)
-      .subscribe(data => {
+      .subscribe((data: { data: any; }) => {
       alert(data.data);
       //this.router.navigate(["tutorProfile"]);
       this.ngOnInit();
     }
-      , error => this.errorMessage = error)
+      , (error: any) => this.errorMessage = error)
   }
     else {
       this.wholeObject.data.password_cus = session.chpassword;
     this.newService.UpdateUser_Customer(this.wholeObject.data)
-    .subscribe(data => {
+    .subscribe((data: { data: any; }) => {
     alert(data.data);
     //this.router.navigate(["tutorProfile"]);
     this.ngOnInit();
   }
-    , error => this.errorMessage = error)
+    , (error: any) => this.errorMessage = error)
 }}
   else{
     alert("Invalid")
@@ -284,7 +321,7 @@ generateOTP() {
 
 login(user_login:any){
   this.newService.login(user_login)
-    .subscribe(data => {
+    .subscribe((data: any) => {
    console.log(data.data[0]);
    if (typeof(data.data[0]) !== "undefined"){
      //this.laundrycounting = this.laundrycounting + 1;
@@ -297,10 +334,10 @@ login(user_login:any){
      this.router.navigate(["Customer"]);
    }
   }
-    , error => this.errorMessage = error)
+    , (error: any) => this.errorMessage = error)
 
   this.newService.loginCustomer(user_login)
-    .subscribe(data => {
+    .subscribe((data: any) => {
     console.log(data.data[0]);
     if (typeof(data.data[0]) !== "undefined"){
       //this.customercounting = this.customercounting + 1;
@@ -308,8 +345,12 @@ login(user_login:any){
      data.data[0].date = new Date();
      this.newService.UpdateUser_Customer(data.data[0])
       .subscribe((data:any) => {
+        this.customer = true;
+        this.home= false;
+        this.newService.sendlaundryname(data.data[0].comname);
         alert(data.data);
-        this.ngOnInit();
+        
+       // this.ngOnInit();
       }
         , (error: any) => this.errorMessage = error)
 
@@ -317,7 +358,7 @@ login(user_login:any){
      this.router.navigate(["Laundry"]);
     }
   }
-    , error => this.errorMessage = error)
+    , (error: any) => this.errorMessage = error)
     
    /**  if (this.laundrycounting > 1){
       this.router.navigate(["Customer"]);
@@ -330,6 +371,9 @@ login(user_login:any){
     }**/
 
 }
+addingcart(){
+  this.router.navigate(['Laundry']);
+}
 Profile(){
   this.router.navigate(['Update']);
 }
@@ -337,7 +381,7 @@ change(){
   this.router.navigate(['change']);
 }
 Orders(){
-  this.router.navigate(['Customer']);
+  this.router.navigate(['Customer-list']);
 }
 Prices(){
   this.router.navigate(['Customers']);
@@ -348,10 +392,60 @@ logout(){
   this.customer = false;
   this.router.navigate(['']);
 }
-  
-  
+Myorders(){
+  this.router.navigate(['yourorders']);
+
+}
+removing(data:any){
+  const index: number = this.totaldata1.indexOf(data);
+  this.totaldata1.splice(index, 1);
+  AppComponent.getlen = this.totaldata1.length;
+  if (AppComponent.getlen == 0){
+    this.get = true;
+  }
+  else{
+    this.get = false;
+  }
+
+}
+onIncrement(data:any): void {
+  const index: number = this.totaldata1.indexOf(data);
+  data[3] = Number(this.totaldata1[index][3]) + 1;
+  console.log(this.totaldata1);
+
+  }
  
-  
+  onDecrement(data:any): void {
+    const index: number = this.totaldata1.indexOf(data);
+    if (data[3] > 0) {
+      data[3] = Number(this.totaldata1[index][3]) - 1;
+      console.log(this.totaldata1);
+    }
+    if (data[3] === 0){
+      this.removing(data);
+    }
+  }
+  movetopayment(){
+    this.newService.sendCartItems(this.totaldata1);
+    this.router.navigate(['Payment']);
+  }
+  checkout(){
+    //this.gettingcart();
+    console.log(AppComponent.totalData);
+    console.log(this.getlen1);
+    this.getlen1 = AppComponent.totalData.length;
+    this.totaldata1 = AppComponent.totalData;
+    if (this.getlen1 == 0){
+      this.get = true;
+  }
+    else{
+      this.get = false;
+  }
+  }
+     
+
+
 }
 
+ 
 

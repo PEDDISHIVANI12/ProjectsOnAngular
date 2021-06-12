@@ -1,98 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common.service';
-
+import { AppComponent } from "../app.component";
+import { ContactService } from '../contact.service';
+import { Router } from '@angular/router';
+import { EncryptionService } from '../encryption.service';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-add2cart',
   templateUrl: './add2cart.component.html',
   styleUrls: ['./add2cart.component.css']
 })
-export class Add2cartComponent implements OnInit {
+export class Add2cartComponent  extends AppComponent implements OnInit {
   errorMessage: any;
   getresult: any;
   totalData = new Array<Array<any>>();
   getlen = 0;
+  select:any = "Washing";
   get: boolean = false;
-  constructor(private newService:CommonService) { }
-
+  constructor(private ContactService:ContactService,private commonService:CommonService,private routing:Router,private enService1: EncryptionService,private ref1: ChangeDetectorRef) { 
+    super(ContactService,commonService,routing,enService1,ref1);
+  }
   ngOnInit(): void {
-    this.newService.getPrices(this.newService.getlaundryId())
-      .subscribe(data => {
+    console.log(this.commonService.getlaundryId());
+    this.commonService.getPrices(this.commonService.getlaundryId())
+      .subscribe((data: { data: any; }) => {
       console.log(data.data);
       this.getresult = data.data;
     }
-      , error => this.errorMessage = error)
-  
+      , (error: any) => this.errorMessage = error)
+      console.log(this.select);
+
+
     }
-    addtocart(Type:any,Item:any,price:any){
+    add2cart(Type:any,Item:any,price:any){
       let myData = new Array<any>();
       myData.push(Type);
       myData.push(Item);
       myData.push(price);
       myData.push(1);
       console.log(myData);
-      console.log(this.totalData.indexOf(myData));
-      if(this.totalData.indexOf(myData) === -1) {
+      let count = 0;
+      for(let index = 0; index < this.totalData.length;index ++ ){
+        if((this.totalData[index][0] === myData[0]) && (this.totalData[index][1] === myData[1])){
+          count = count + 1;
+        }
+      }
+      if (count > 0){
+        alert("You have already added the item into the cart");
+      }
+      else{
         this.totalData.push(myData);
       }
       console.log(this.totalData);
       this.getlen = this.totalData.length;
       console.log(this.getlen);
-      
+      this.commonService.sendCartItems(this.totalData);
+      //this.commonService.sendnumberofCartItems(this.getlen);
+      AppComponent.gettingcart(this.commonService,this.getlen1);
     }
-    removing(data:any){
-      const index: number = this.totalData.indexOf(data);
-      this.totalData.splice(index, 1);
-      this.getlen = this.totalData.length;
-      if (this.getlen == 0){
-        this.get = true;
-      }
-      else{
-        this.get = false;
-      }
-    }
-    onIncrement(data:any): void {
-      const index: number = this.totalData.indexOf(data);
-      data[3] = Number(this.totalData[index][3]) + 1;
-      console.log(this.totalData);
-      }
-     
-      onDecrement(data:any): void {
-        const index: number = this.totalData.indexOf(data);
-        if (data[3] > 0) {
-          data[3] = Number(this.totalData[index][3]) - 1;
-          console.log(this.totalData);
-        }
-        else{
-          data[3] = 0;
-        }
-      }
-    add2cart(){
-
-    }
-    washing(){
-
-    }
-    WashIron(){
-
-    }
-    Ironing(){
-
-    }
-    dry(){
-      
-    }
-    movetopayment(){
-      
-    }
-    checkout(){
-      this.getlen = this.totalData.length;
-      if (this.getlen == 0){
-        this.get = true;
-    }
-      else{
-        this.get = false;
-    }
-    }
+    
+    
   }
  
 

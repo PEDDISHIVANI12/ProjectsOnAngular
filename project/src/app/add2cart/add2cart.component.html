@@ -87,7 +87,7 @@ button,
 .subtotal-value:before,
 .total-value:before,
 .promo-value:before {
-  content: '£';
+  content: '₹';
 }
 
 .hide {
@@ -414,21 +414,18 @@ aside {
 </head>
 
 <form>
-  Pick a topic:
-  <input type="radio" ng-model="myVar" value="dogs">Dogs
-  <input type="radio" ng-model="myVar" value="tuts">Tutorials
-  <input type="radio" ng-model="myVar" value="cars">Cars
-  <input type="radio" ng-model="myVar" value="cars1">Cars1
+  <select name = "select"[(ngModel)] = "select">
+    <option selected value="Washing" >Washing</option>
+    <option value="Washing&Iron" >Washing & Ironing</option>
+    <option value="Ironing">Ironing</option>
+    <option value="Dry" >Dry Washing</option>
 
-</form>
+  </select>
 
-<div ng-switch="myVar">
-  <div ng-switch-when="dogs">
-     <h1>Dogs</h1>
-     <p>Welcome to a world of dogs.</p>
 
+
+<div *ngIf = "select == 'Washing'">
     <div class="basket" >
-      Washing
       <div class="basket-labels">
         <ul>
           <li class="item item-heading">Item</li>
@@ -445,7 +442,7 @@ aside {
           </div>
         </div>
         <div class="price">{{getresult.wasshirt}}</div>
-        <button (click) = "addtocart('Washing','Shirt',getresult.wasshirt)">add to cart</button>
+        <button (click) = "add2cart('Washing','Shirt',getresult.wasshirt)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -457,7 +454,7 @@ aside {
           </div>
         </div>
         <div class="price">{{getresult.wastie}}</div>
-        <button (click) = "addtocart('Washing','Tie',getresult.wastie)">add to cart</button>
+        <button (click) = "add2cart('Washing','Tie',getresult.wastie)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -469,7 +466,7 @@ aside {
           </div>
         </div>
       <div class="price">{{getresult.wasblazer}}</div>
-        <button (click) = "addtocart('Washing','Blazer',getresult.wasblazer)">add to cart</button>
+        <button (click) = "add2cart('Washing','Blazer',getresult.wasblazer)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -481,7 +478,7 @@ aside {
           </div>
         </div>
     <div class="price">{{getresult.waspant}}</div>
-        <button (click) = "addtocart('Washing','Pant',getresult.waspant)">add to cart</button>
+        <button (click) = "add2cart('Washing','Pant',getresult.waspant)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -493,7 +490,7 @@ aside {
           </div>
         </div>
         <div class="price">{{getresult.wasjeans}}</div>
-        <button (click) = "addtocart('Washing','Jeans',getresult.wasjeans)">add to cart</button>
+        <button (click) = "add2cart('Washing','Jeans',getresult.wasjeans)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -505,14 +502,13 @@ aside {
           </div>
         </div>
         <div class="price">{{getresult.wassuit}}</div>
-        <button (click) = "addtocart('Washing','Suit',getresult.wassuit)">add to cart</button>
+        <button (click) = "add2cart('Washing','Suit',getresult.wassuit)">add to cart</button>
       </div>
     </div>
   </div>
-  <div ng-switch-when="tuts">
-    
+  <div *ngIf = "select === 'Washing&Iron'">
+
     <div class="basket">
-      1st
       <div class="basket-labels">
         <ul>
           <li class="item item-heading">Item</li>
@@ -528,8 +524,8 @@ aside {
             <p><strong>Shirt</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.waishi}}</div>
+        <button (click) = "add2cart('Washing & Ironing','Shirt',getresult.waishi)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -540,8 +536,8 @@ aside {
             <p><strong>Tie</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.waitie}}</div>
+        <button (click)="add2cart('Washing & Ironing','Tie',getresult.waitie)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -552,8 +548,8 @@ aside {
             <p><strong>Blazer</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.waiblazer}}</div>
+        <button (click)="add2cart('Washing & Ironing','Blazer',getresult.waiblazer)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -564,8 +560,8 @@ aside {
             <p><strong>Pant</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.waipant}}</div>
+        <button (click)="add2cart('Washing & Ironing','Pant',getresult.waipant)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -576,8 +572,8 @@ aside {
             <p><strong>Jeans</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.waijeans}}</div>
+        <button (click)="add2cart('Washing & Ironing','Jeans',getresult.waijeans)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -588,15 +584,13 @@ aside {
             <p><strong>Suit</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.waisuits}}</div>
+        <button (click)="add2cart('Washing & Ironing','Suit',getresult.waisuits)">add to cart</button>
       </div>
     </div>
-  </div>
-  <div ng-switch-when="cars">
-    
+    </div>
+    <div *ngIf = "select === 'Ironing'">
     <div class="basket">
-      2nd
       <div class="basket-labels">
         <ul>
           <li class="item item-heading">Item</li>
@@ -612,8 +606,8 @@ aside {
             <p><strong>Shirt</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.ironshirt}}</div>
+        <button (click)="add2cart('Ironing','Shirt',getresult.ironshirt)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -624,8 +618,8 @@ aside {
             <p><strong>Tie</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.irontie}}</div>
+        <button (click)="add2cart('Ironing','Tie',getresult.irontie)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -636,8 +630,8 @@ aside {
             <p><strong>Blazer</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.ironblazer}}</div>
+        <button (click)="add2cart('Ironing','Blazer',getresult.ironblazer)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -648,8 +642,8 @@ aside {
             <p><strong>Pant</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.ironpant}}</div>
+        <button (click)="add2cart('Ironing','Pant',getresult.ironpant)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -660,8 +654,8 @@ aside {
             <p><strong>Jeans</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.ironjeans}}</div>
+        <button (click)="add2cart('Ironing','Jeans',getresult.ironjeans)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -672,15 +666,14 @@ aside {
             <p><strong>Suit</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.ironsuit}}</div>
+        <button (click)="add2cart('Ironing','Suit',getresult.ironsuit)">add to cart</button>
       </div>
     </div>
   </div>
-  <div ng-switch-when="cars1">
-    
+  <div *ngIf = "select === 'Dry'">
+
     <div class="basket">
-      2nd
       <div class="basket-labels">
         <ul>
           <li class="item item-heading">Item</li>
@@ -696,8 +689,8 @@ aside {
             <p><strong>Shirt</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.dryshirts}}</div>
+        <button (click)="add2cart('Dry Washing','Shirt',getresult.dryshirts)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -708,8 +701,8 @@ aside {
             <p><strong>Tie</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.drytie}}</div>
+        <button (click)="add2cart('Dry Washing','Tie',getresult.drytie)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -720,8 +713,8 @@ aside {
             <p><strong>Blazer</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.dryblazer}}</div>
+        <button (click)="add2cart('Dry Washing','Blazer',getresult.dryblazer)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -732,8 +725,8 @@ aside {
             <p><strong>Pant</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.drypant}}}</div>
+        <button (click)="add2cart('Dry Washing','Pant',getresult.drypant)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -744,8 +737,8 @@ aside {
             <p><strong>Jeans</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.dryjeans}}</div>
+        <button (click)="add2cart('Dry Washing','Jeans',getresult.dryjeans)">add to cart</button>
       </div>
       <div class="basket-product">
         <div class="item" >
@@ -756,125 +749,15 @@ aside {
             <p><strong>Suit</strong></p>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <button (click)="add2cart()">add to cart</button>
+        <div class="price">{{getresult.drysuit}}</div>
+        <button (click)="add2cart('Dry Washing','Suit',getresult.drysuit)">add to cart</button>
       </div>
     </div>
- </div>
-</div>
+    </div>
+  </form>
 <!------------------------>
 
     
-      <button (click) = "checkout()" onclick="document.getElementById('id10').style.display='block'" style="width:auto;color:black;" class="btn btn-primary"class="button">checkout</button>
 
-      <div class="col-25" style="width:40%">
-          <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i><b>{{getlen}}</b></span>
-         
-      </div>
-<div id="id10" class="modal" style= "padding-top:10px;width:80%;padding-left:300px">
-
-  <form class="modal-content animate">
-      <div class="container px-0">
-          <div class="row mt-4">
-              <div class="col-12 col-lg-10 offset-lg-1">
-                  <div class="row">
-                      <div class="col-12">
-                          <div class="text-center text-150">
-                              <i class="fa fa-book fa-2x text-success-m2 mr-1"></i>
-                              <span class="text-default-d3">Cart Items</span><span onclick="document.getElementById('id10').style.display='none'" class="close" title="Close Modal">&times;</span>
-  
-                          </div>
-                      </div>
-                  </div>
-                  <!-- .row -->
-  
-                  <hr class="row brc-default-l1 mx-n1 mb-4" />
-  
-  
-                  <div class="mt-4">
-                    <div *ngIf = "get" style = "text-align: center;">
-                      No Items in the Cart !!!!!!!!!
-                    </div>
-  
-                     
-                  <div *ngIf = "!get">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">S.No</th>
-                          <th scope="col">Type</th>
-                          <th scope="col">Item</th>
-                          <th scope="col">Unit Price</th>
-                          <th scope="col">Quantity</th>
-                          <th scope="col">Price</th>
-                        </tr>
-                      </thead>
-                      <tbody *ngFor = "let data of totalData">
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>{{data[0]}}</td>
-                          <td>{{data[1]}}</td>
-                          <td>{{data[2]}}</td>
-                          <th scope="col"><button (click) = "onIncrement(data)"class="button button5">+</button><input type = "text" style="width:2px" value={{data[3]}}><button (click) = "onDecrement(data)"class="button button5">-</button></th>
-                          <th scope="col">{{data[2] * data[3]}}</th>
-                          <th><button (click) = "removing(data)" class="btn"><i class="fa fa-trash"></i></button></th>
-                        </tr>
-                      </tbody>
-                    </table>
-                 
-                      <div class="row border-b-2 brc-default-l2"></div>
-  
-                      <!-- or use a table instead -->
-                      <!--
-              <div class="table-responsive">
-                  <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
-                      <thead class="bg-none bgc-default-tp1">
-                          <tr class="text-white">
-                              <th class="opacity-2">#</th>
-                              <th>Description</th>
-                              <th>Qty</th>
-                              <th>Unit Price</th>
-                              <th width="140">Amount</th>
-                          </tr>
-                      </thead>
-  
-                      <tbody class="text-95 text-secondary-d3">
-                          <tr></tr>
-                          <tr>
-                              <td>1</td>
-                              <td>Domain registration</td>
-                              <td>2</td>
-                              <td class="text-95">$10</td>
-                              <td class="text-secondary-d2">$20</td>
-                          </tr> 
-                      </tbody>
-                  </table>
-              </div>
-              -->
-  
-                    
-                      <hr />
-  
-                      <div>
-                          <span class="text-secondary-d1 text-105">Thank you for your business</span>
-                         
-                        
-                          <a (click) = "movetopayment()" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Pay Now</a>
-                        </div>
-  
-                        </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </form>
-  </div>
-  <script>
-   
-var modal = document.getElementById('id10');
-window.onclick = function(event) {
-if (event.target == modal) {
-  modal.style.display = "none";
-}
-}
-  </script>
+      
+ 
