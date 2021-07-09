@@ -1,7 +1,9 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { AuthserviceService } from '../authservice.service';
 import { CommonService } from '../common.service';
 import { ContactService } from '../contact.service';
 import { EncryptionService } from '../encryption.service';
@@ -18,12 +20,15 @@ export class PaymentComponent extends AppComponent implements OnInit {
   errorMessage: any;
   paymentmode : any;
   orders: any;
-  currentDate = new Date();
-  pickup:any;
+  //currentDate:any= new Date(); 
   sum = 0;
-  constructor(private ContactService:ContactService,private commonService:CommonService,private routing:Router,private enService1: EncryptionService,private ref1: ChangeDetectorRef) { 
-    super(ContactService,commonService,routing,enService1,ref1);
+  constructor(private ContactService:ContactService,private commonService:CommonService,private routing:Router,private auths1:AuthserviceService,private enService1: EncryptionService,private ref1: ChangeDetectorRef) { 
+    super(ContactService,commonService,routing,auths1,enService1,ref1);
   }
+
+  currentDate :Date = new Date();
+  pickup:Date = this.currentData;
+  delidate = this.pickup.setDate(this.pickup.getDate() + 2);
 
   ngOnInit(): void {
     this.orders = this.commonService.getCartItems();
@@ -41,6 +46,7 @@ export class PaymentComponent extends AppComponent implements OnInit {
     data.laundid = this.commonService.getlaundryId();
     data.paymentmode = this.paymentmode;
     data.sum = this.sum;
+    data.orderdate = new Date();
     data.status = "Ordered";
     data.length = this.orders.length;
     this.commonService.Payment(data)

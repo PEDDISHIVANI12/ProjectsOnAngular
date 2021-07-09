@@ -11,7 +11,97 @@
     * {
       box-sizing: border-box;
     }
-    
+    .modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+border: 1px solid #888;
+width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+position: absolute;
+right: 25px;
+top: 0;
+color: #000;
+font-size: 35px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: red;
+cursor: pointer;
+}
+.required
+{
+    color: red;
+}
+
+/* Add Zoom Animation */
+.animate {
+-webkit-animation: animatezoom 0.6s;
+animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+from {-webkit-transform: scale(0)} 
+to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+from {transform: scale(0)} 
+to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+span.psw {
+   display: block;
+   float: none;
+}
+.cancelbtn {
+   width: 100%;
+}
+}
+    .button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #6666ff;
+}
+
+.button2:hover {
+  background-color: #6666ff;
+  color: white;
+}
 
     .row {
       display: -ms-flexbox; /* IE10 */
@@ -43,9 +133,9 @@
     }
     
     .container {
-      background-color: #f2f2f2;
+      background-color: white;
       padding: 5px 20px 15px 20px;
-      border: 1px solid lightgrey;
+      border: 1px solid white;
       border-radius: 3px;
     }
     
@@ -89,12 +179,12 @@
     }
     
     hr {
-      border: 1px solid lightgrey;
+      border: 1px solid white;
     }
     
     span.price {
       float: right;
-      color: grey;
+      color:white;
     }
     
     /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
@@ -109,69 +199,58 @@
     </style>
     </head>
     <body>
+
     
     <div class="row">
       <div class="col-75">
         <div class="container">
+          <button onclick="document.getElementById('id21').style.display='block'" style="width:auto;" class="button button2" >View Order</button><br/><br/>
+
           <form #userForm1="ngForm" (ngSubmit)="payment(userForm1.value)" novalidate>
-          
             <div class="row">
               <div class="col-50">
-                <h3>Billing Address</h3>
                 <div class="form-wrapper">
-                  <label for="fname"><i class="fa fa-user"></i>Full Name</label>
+                  <label for="fname"><i class="fa fa-user"></i>Full Name<span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter Full Name" #fullname = "ngModel" name="fullname" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && fullname.errors?.required">Please enter Full Name</div>
-                  </div>
+                 
                 </div>
 
                 <div class="form-wrapper">
-                  <label for="email"><i class="fa fa-envelope"></i>Email</label>
+                  <label for="email"><i class="fa fa-envelope"></i>Email<span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter Email" #email = "ngModel" name="email" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && email.errors?.required">Please enter Email</div>
-                  </div>
+                  
                 </div>
 
                 <div class="form-wrapper">
-                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                  <label for="adr"><i class="fa fa-address-card-o"></i> Address<span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter Address" #address = "ngModel" name="address" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && address.errors?.required">Please enter Address</div>
-                  </div>
+                  
                 </div>
                 <div class="form-wrapper">
-                  <label for="adr"><i class="fa fa-address-card-o"></i> PhoneNumber</label>
+                  <label for="adr"><i class="fa fa-address-card-o"></i> PhoneNumber<span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter Phone Number" #pnumber = "ngModel" name="pnumber" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && pnumber.errors?.required">Please enter PhoneNumber</div>
-                  </div>
+                 
                 </div>
 
 
                 <div class="form-wrapper">
-                  <label for="city"><i class="fa fa-institution"></i> City</label>
+                  <label for="city"><i class="fa fa-institution"></i> City<span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter City" #city = "ngModel" name="city" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && city.errors?.required">Please enter City</div>
-                  </div>
+                
                 </div>
     
                 <div class="row">
                   <div class="col-50">
                     <div class="form-wrapper">
-                      <label for="state"><b>State</b></label>
+                      <label for="state"><b>State</b><span class="required">*</span></label>
                       <input ngModel type="text" placeholder="Enter State" #state = "ngModel" name="state" required>
                       <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && state.errors?.required">Please enter State</div>
-                      </div>
+                      
                     </div>
                   </div>
 
@@ -180,52 +259,54 @@
 
                   <div class="col-50">
                     <div class="form-wrapper">
-                      <label for="zip"><b>Zip</b></label>
+                      <label for="zip"><b>Zip</b><span class="required">*</span></label>
                       <input ngModel type="text" placeholder="Enter Zip" #zip = "ngModel" name="zip" required>
                       <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && zip.errors?.required">Please enter Zip</div>
-                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-50">
+                    <div class="form-wrapper">
+                      <label for="pickup"><b>PickUp date</b><span class="required">*</span></label>
+                      <input type="date" [min]="currentDate | date:'yyyy-MM-dd'" placeholder="Enter PickUp date" [(ngModel)] = "pickup" name="pickup" required>
+                      <br/>
+                      
                     </div>
                   </div>
 
                   <div class="col-50">
                     <div class="form-wrapper">
-                      <label for="pickup"><b>PickUp date</b></label>
-                      <input ngModel type="date" [min]="currentDate| date:'yyyy-MM-dd'" placeholder="Enter PickUp date" [(ngModel)] = "pickup" name="pickup" required>
+                      <label for="drop"><b>Delievery Date</b><span class="required">*</span></label>
+                      <input type="date" [min]="delidate| date:'yyyy-MM-dd'" placeholder="Enter Delievery Date" [(ngModel)] = "delidate"  name="delidate" required>
                       <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && pickup.errors?.required">Please enter PickUp data</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-50">
-                    <div class="form-wrapper">
-                      <label for="drop"><b>Delievery Date</b></label>
-                      <input ngModel type="date" [min]="pickup| date:'yyyy-MM-dd'" placeholder="Enter Delievery Date" #delidate = "ngModel" name="delidate" required>
-                      <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && delidate.errors?.required">Please enter Delievery Date</div>
-                      </div>
+                      
                     </div>
                   </div>
                  <br/>
                  <br/>
                 
                  <br/>
-                  <select name = "select"[(ngModel)] = "select">
-                    <option selected value="pay" >Pay On Delievery</option>
-                    <option value="paycard" >Payment through Card</option>                
-                  </select>
 
-                 
+                 <div class="col-50">
+                  <div class="form-wrapper">
+                    <label for="drop"><b>Payment Mode</b></label>
+                    <select name = "select"[(ngModel)] = "select">
+                      <option selected value="pay" >Pay On Delievery</option>
+                      <option value="paycard" >Payment through Card</option>                
+                    </select>
+                  </div>
                 </div>
+                  
+</div>
+                 
+                
               </div>
     
               <div class="col-50" *ngIf = "select == 'paycard'">
-                <h3>Payment</h3>
-                <label for="fname">Accepted Cards</label>
+                <label for="fname">Payment Accepted Cards</label>
                 <div class="icon-container">
                   <i class="fa fa-cc-visa" style="color:navy;"></i>
                   <i class="fa fa-cc-amex" style="color:blue;"></i>
@@ -233,50 +314,40 @@
                   <i class="fa fa-cc-discover" style="color:orange;"></i>
                 </div>
                 <div class="form-wrapper">
-                  <label for="cname"><b>Name on Card</b></label>
+                  <label for="cname"><b>Name on Card</b><span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter Name on Card" #cname = "ngModel" name="cname" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && cname.errors?.required">Please enter Name on Card</div>
-                  </div>
+                 
                 </div>
                 <div class="form-wrapper">
-                  <label for="ccnum"><b>Card Number</b></label>
+                  <label for="ccnum"><b>Card Number</b><span class="required">*</span></label>
                   <input ngModel type="text" placeholder="Enter Card Number" #ccnum = "ngModel" name="ccnum" required>
                   <br/>
-                  <div class = "text-danger">
-                    <div *ngIf="userForm1.touched && ccnum.errors?.required">Please enter Card Number</div>
-                  </div>
+                 
                 </div>
                
                 <div class="row">
                   <div class="col-50">
                     <div class="form-wrapper">
-                      <label for="expmonth"><b>Exp Month</b></label>
+                      <label for="expmonth"><b>Exp Month</b><span class="required">*</span></label>
                       <input ngModel type="text" placeholder="Enter Exp Month" #expmonth = "ngModel" name="expmonth" required>
                       <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && expmonth.errors?.required">Please enter Exp Monthp</div>
-                      </div>
+                      
                     </div>
                     <div class="form-wrapper">
-                      <label for="expyear"><b>Exp Year</b></label>
+                      <label for="expyear"><b>Exp Year</b><span class="required">*</span></label>
                       <input ngModel type="text" placeholder="Enter Exp Year" #expyear = "ngModel" name="expyear" required>
                       <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && expyear.errors?.required">Please enter Exp Year</div>
-                      </div>
+                     
                     </div>
 
                   </div>
                   <div class="col-50">
                     <div class="form-wrapper">
-                      <label for="cvv"><b>CVV</b></label>
+                      <label for="cvv"><b>CVV</b><span class="required">*</span></label>
                       <input ngModel type="text" placeholder="Enter CVV" #cvv = "ngModel" name="cvv" required>
                       <br/>
-                      <div class = "text-danger">
-                        <div *ngIf="userForm1.touched && cvv.errors?.required">Please enter CVV</div>
-                      </div>
+                     
                     </div>
                    
                   </div>
@@ -285,31 +356,114 @@
             </div>
             
            <br/>
-            <button [disabled] = "!userForm1.valid" >Continue to Check Out</button>
-          </form>
+           <div style="width:700px;padding-left: 470px"> 
+            <button [disabled] = "!userForm1.valid" class="button button2" >Continue to checkout</button>
+        </div>         
+       </form>
         </div>
       </div>
-      <div class="col-25">
-        <div class="container">
-          <h4>Cart <span class="price" style="color:black"></span></h4>
-          <hr/>
-          <table>
-            <tr>
-              <th>Service</th>
-              <th>Item</th>
-              <th>Quantity</th>
-              <th>Prices</th>
-
-            </tr>
-            <tr *ngFor = "let data of orders">
-              <td>{{data[0]}}</td>
-              <td>{{data[1]}}</td>
-              <td>{{data[2]}}</td>
-              <td>{{data[2] * data[3]}}</td>
-            </tr>
-          </table>
-          <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-        </div>
-      </div>
+     
     </div>
+
+
+    <div id="id21" class="modal"  >
+
+      <form class="modal-content animate">
+          <div class="container px-0">
+              <div class="row mt-4">
+                  <div class="col-12 col-lg-10 offset-lg-1">
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="text-center text-150">
+                                  <i class="fa fa-book fa-2x text-success-m2 mr-1"></i>
+                                  <span class="text-default-d3">Cart Items</span><span onclick="document.getElementById('id21').style.display='none'" class="close" title="Close Modal">&times;</span>
+      
+                              </div>
+                          </div>
+                      </div>
+                      <!-- .row -->
+      
+                      <hr class="row brc-default-l1 mx-n1 mb-4" />
+      
+      
+                      <div class="mt-4">
+                        <div *ngIf = "get" style = "text-align: center;">
+                          No Items in the Cart !!!!!!!!!
+                        </div>
+      
+                         
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Service</th>
+                              <th>Item</th>
+                              <th>Unit Price</th>
+                              <th>Quantity</th>
+                              <th>Prices</th>                
+                            </tr>
+                          </thead>
+                              <tr *ngFor = "let data of orders">
+                                <td>{{data[0]}}</td>
+                                <td>{{data[1]}}</td>
+                                <td>{{data[2]}}</td>
+                                <td>{{data[3]}}</td>
+                                <td>{{data[2] * data[3]}}</td>
+                            </tr>
+                        </table>
+                     
+                          <div class="row border-b-2 brc-default-l2"></div>
+      
+                          <!-- or use a table instead -->
+                          <!--
+                  <div class="table-responsive">
+                      <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
+                          <thead class="bg-none bgc-default-tp1">
+                              <tr class="text-white">
+                                  <th class="opacity-2">#</th>
+                                  <th>Description</th>
+                                  <th>Qty</th>
+                                  <th>Unit Price</th>
+                                  <th width="140">Amount</th>
+                              </tr>
+                          </thead>
+      
+                          <tbody class="text-95 text-secondary-d3">
+                              <tr></tr>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Domain registration</td>
+                                  <td>2</td>
+                                  <td class="text-95">$10</td>
+                                  <td class="text-secondary-d2">$20</td>
+                              </tr> 
+                          </tbody>
+                      </table>
+                  </div>
+                  -->
+      
+                        
+                          <hr />
+      
+                          <div>
+                             
+                            
+                            </div>
+      
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </form>
+      </div>
+      <script>
+  
+        var modal = document.getElementById('id21');
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "block";
+        }
+        }
+        </script>
+
     </body>
+   

@@ -43,14 +43,14 @@ async function sendMail(user, callback) {
   });
 
 let volunteers = {
-    from: '"Edunate Admin"<admin@edunate.com>', // sender address
+    from: '"Laundry Admin"<admin@laundry.com>', // sender address
     to: user.email, // list of receivers
     subject: 'Order details', // Subject line
-    html: `<body style="background-color:#e2e1e0;font-family: Open Sans, sans-serif;font-size:100%;font-weight:400;line-height:1.4;color:#000;">
+    html: `<body style="background-color:blue;font-family: Open Sans, sans-serif;font-size:100%;font-weight:400;line-height:1.4;color:#000;">
     <table style="max-width:670px;margin:50px auto 10px;background-color:#fff;padding:50px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); border-top: solid 10px green;">
       <thead>
         <tr>
-          <th style="text-align:left;"><img style="max-width: 150px;" src="/assets/img/logo/logo.png" alt="Softwash"></th>
+          <th style="text-align:left;"><img style="max-width: 150px;" src="/home/shivani/Desktop/project/src/assets/img/logo/logo.png" alt="Softwash"></th>
         </tr>
       </thead>
       <tbody>
@@ -74,6 +74,7 @@ let volunteers = {
             <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">ID</span> ${user.message.cus_id}</p>
           </td>
           <td style="width:50%;padding:20px;vertical-align:top">
+          <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Date</span> ${user.message.orderdate}</p>
             <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span> ${user.message.address}</p>
             <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Number of Items</span>${user.message.length}</p>
             <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Pickup Date</span> ${user.message.pickup} </p>
@@ -81,20 +82,10 @@ let volunteers = {
 
           </td>
         </tr>
-        <tr>
-          <td colspan="2" style="font-size:20px;padding:30px 15px 0 15px;">Items</td>
-        </tr>
-        <tr>
-          <td colspan="2" style="padding:15px;">
-          {% for ins in ${user.message.order} %}
-          <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">{{ins[0]}} - {{ins[1]}} : quantity - {{ins[2]}}</span> Rs. {{ins[2] * ins[3]}} <b style="font-size:12px;font-weight:300;"> /person/day</b></p>
-             
-          {% endfor %}
-
-            
-          </td>
-        </tr>
       </tbody>
+      <tr>
+      <button><a href="http://localhost:4200">View your Orders</a></button>
+      </tr>
       <tfooter>
         <tr>
           <td colspan="2" style="font-size:14px;padding:50px 15px 0 15px;">

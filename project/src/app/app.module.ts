@@ -19,6 +19,8 @@ import { UpdateComponent } from './update/update.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { Add2cartComponent } from './add2cart/add2cart.component';
 import { SafehtmlPipe } from './safehtml.pipe';
+import { AuthGuard } from './auth.guard';
+import { AuthserviceService } from './authservice.service';
 
 
 const appRoot: Routes = [
@@ -60,7 +62,8 @@ const appRoot: Routes = [
     OtpVerificationModule,
     RouterModule.forRoot(appRoot),
   ],
-  providers: [],
+  
+  providers: [AuthserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

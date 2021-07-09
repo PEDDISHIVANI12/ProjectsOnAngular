@@ -38,6 +38,29 @@
 .tabordion section {
   display: block;
 }
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #6666ff;
+}
+
+.button2:hover {
+  background-color: #6666ff;
+  color: white;
+}
 body{
     margin-top:20px;
     color: #484b51;
@@ -394,7 +417,7 @@ span.price {
               <h4 class="card-title">{{cart.comname | titlecase }}</h4>
               <b>Address : </b><p class="card-text">{{cart.add2 + cart.add1 + cart.district}}</p>
               <b>Phone Number : </b><p class="card-text">{{cart.pnumber}}</p>
-              <a (click)= "getprices(cart)" onclick="document.getElementById('id09').style.display='block'" style="width:auto;color:black;background-color: blue;" class="btn btn-primary">Check Prices</a>
+              <a (click)= "getprices(cart)" onclick="document.getElementById('id09').style.display='block'" class="button button2">Check Prices</a>
             </div>
         </div>
       </div>

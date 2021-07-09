@@ -8,6 +8,29 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
+  .button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #6666ff;
+}
+
+.button2:hover {
+  background-color: #6666ff;
+  color: white;
+}
   
   input[type=submit] {
     width: 100%;
@@ -36,139 +59,115 @@ width: 100%;
 button:hover {
 opacity: 0.8;
 }
-
- 
+.required
+{
+    color: red;
+}
   </style>
-  <body>
   
   
-  <div>
    <form class="modal-content animate" #userForm="ngForm" (ngSubmit)="update(userForm.value)" novalidate >
     
     
     <div class="container">
   
       <div class="form-wrapper">
-      <label for="uname"><b>FirstName</b></label>
+      <label for="uname"><b>FirstName</b><span class="required">*</span></label>
       <input ngModel #FirstName_laun = "ngModel" type="text" placeholder="Enter First Name" [(ngModel)] = "user.FirstName_laun" name="FirstName_laun" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && FirstName_laun.errors?.required">Please enter FirstName</div>
-      </div>
+      
       </div>
   
       <div class="form-wrapper">
-        <label for="uname"><b>Laundry Pic </b></label><br/>
+        <label for="uname"><b>Laundry Pic </b><span class="required">*</span></label><br/>
         <input  type="file" (change)="selectFile($event)" placeholder="Enter First Name" [(ngModel)] = "user.LaundryPic" name="LaundryPic" required>
       </div>
   <br/>
   
       <div class="form-wrapper">
-      <label for="psw"><b>LastName</b></label>
+      <label for="psw"><b>LastName</b><span class="required">*</span></label>
       <input ngModel #LastName_laun = "ngModel" type="text" placeholder="Enter Last Name" [(ngModel)] = "user.LastName_laun"name="LastName_laun" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && LastName_laun.errors?.required">Please enter lastName</div>
-      </div>
+      
       </div>
     
       <div class="form-wrapper">
-      <label for="psw"><b>Company Name</b></label>
+      <label for="psw"><b>Company Name</b><span class="required">*</span></label>
       <input ngModel #comname = "ngModel" type="text" placeholder="Enter Company Name" [(ngModel)] = "user.comname" name="comname" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && comname.errors?.required">Please enter CompanyName</div>
-      </div>
+      
       </div>
     
     
       <div class="form-wrapper">
-      <label for="psw"><b>Email</b></label>
+      <label for="psw"><b>Email</b><span class="required">*</span></label>
       <input ngModel  type="text" placeholder="Enter Email" #email_laundry = "ngModel"[(ngModel)] = "user.email_laundry" name="email_laundry" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && email_laundry.errors?.required">Please enter Email</div>
-      </div>
+      
       </div>
     
     
       <div class="form-wrapper">
-      <label for="psw"><b>Phone Number</b></label>
+      <label for="psw"><b>Phone Number</b><span class="required">*</span></label>
       <input ngModel #pnumber = "ngModel" type="text" placeholder="Enter Phone Number"[(ngModel)] = "user.pnumber" name="pnumber" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && pnumber.errors?.required">Please enter PhoneNumber</div>
-      </div>
+      
       </div>
     
       <div class="form-wrapper">
-      <label for="psw"><b>State</b></label><br/>
+      <label for="psw"><b>State</b><span class="required">*</span></label><br/>
       <select ngModel #state = "ngModel" [(ngModel)] = "user.state" name="state" id="state" required>
           <option value="Telangana">Telangana</option>
           <option value="Andhra Pradesh">Andhra Pradesh</option>
           <option value="TamilNadu">TamilNadu</option>
         </select>
-        <div class = "text-danger">
-          <div *ngIf="userForm.touched && state.errors?.required">Please enter state</div>
-        </div>
+       
       </div>
     <br/><br/>
     
     <div class="form-wrapper">
-      <label for="psw"><b>Address1</b></label>
+      <label for="psw"><b>Address1</b><span class="required">*</span></label>
       <input ngModel #add1 = "ngModel" id = "add1" type="text" placeholder="Enter Address1" [(ngModel)] = "user.add1"name="add1" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && add1.errors?.required">Please enter Address</div>
-      </div>
+     
       </div>
     
       <div class="form-wrapper">
-      <label for="psw"><b>Address2</b></label>
+      <label for="psw"><b>Address2</b><span class="required">*</span></label>
       <input ngModel #add2 = "ngModel" id = "add2" type="text" placeholder="Enter Address2" [(ngModel)] = "user.add2"name="add2" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && add2.errors?.required">Please enter Address</div>
-      </div>
+      
       </div>
     
       <div class="form-wrapper">
-      <label for="psw"><b>District</b></label><br/>
+      <label for="psw"><b>District</b><span class="required">*</span></label><br/>
       <select ngModel #district = "ngModel" [(ngModel)] = "user.district"name="district" id="district">
           <option value="Adilabad">Adilabad</option>
           <option value="Medak">Medak</option>
           <option value="Siddipet">Siddipet</option>
         </select>
-        <div class = "text-danger">
-          <div *ngIf="userForm.touched && district.errors?.required">Please enter district</div>
-        </div>
+       
         </div>
     <br/><br/>
     
     
     <div class="form-wrapper">
-      <label for="psw"><b>Pincode</b></label>
+      <label for="psw"><b>Pincode</b><span class="required">*</span></label>
       <input ngModel #pincode = "ngModel" type="text" placeholder="Enter Pincode" [(ngModel)] = "user.pincode"name="pincode" required>
       </div>
       <div class="form-wrapper">
-      <label for="sec"><b>Security Question</b></label><br/>
+      <label for="sec"><b>Security Question</b><span class="required">*</span></label><br/>
       <select ngModel #secques_laun = "ngModel" [(ngModel)] = "user.secques_laun" name="secques_laun" >
           <option value="What's your pet name?">What's your pet name?</option>
           <option value="What's your favourite destination ?">What's your favourite destination ?</option>
           <option value="What's your favourite dish ?">What's your favourite dish ?</option>
         </select>
-        <div class = "text-danger">
-          <div *ngIf="userForm.touched && secques_laun.errors?.required">Please enter Security Question</div>
-        </div>
+        
         </div>
     <br/><br/>
     
     <div class="form-wrapper">
-      <label for="psw"><b>Security Answer</b></label>
+      <label for="psw"><b>Security Answer</b><span class="required">*</span></label>
       <input ngModel type="text" placeholder="Enter Security Answer" #secans_laundry = "ngModel" [(ngModel)] = "user.secans_laundry" name="secans_laundry" required>
-      <div class = "text-danger">
-        <div *ngIf="userForm.touched && secans_laundry.errors?.required">Please enter Security Answer</div>
-      </div>
+      
       </div>
       <div style="text-align: center;width:600px;padding-left: 480px"> 
-        <button [disabled] = "!userForm.valid" class="btn btn-danger" >Update</button>
+        <button [disabled] = "!userForm.valid" class="button button2" >Update</button>
     </div>
     </div>
     </form>
-  </div>
   
-  </body>
   

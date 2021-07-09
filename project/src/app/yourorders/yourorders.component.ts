@@ -9,7 +9,7 @@ import { CommonService } from '../common.service';
 export class YourordersComponent implements OnInit {
   getresult1: any;
   errorMessage: any;
-index = 0;
+  index = 0;
   showingstatus: boolean = false;
   order: any;
   selecting: any;

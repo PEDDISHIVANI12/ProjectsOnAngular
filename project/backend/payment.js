@@ -39,6 +39,9 @@ app.use(function (req, res, next) {
 var Schema = mongo.Schema;
 
 var UsersSchema = new Schema({
+  orderdate:{
+    type:String
+  },
   fullname:{
     type:String
   },
@@ -134,6 +137,7 @@ app.post("/api/Payment", function (req, res) {
 
 app.post("/api/UpdatePayment", function (req, res) {
   model.findByIdAndUpdate(req.body._id, {
+    orderdate:req.body.orderdate,
     address: req.body.address,
     city: req.body.city,
     state:req.body.state,

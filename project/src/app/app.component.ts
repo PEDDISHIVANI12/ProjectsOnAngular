@@ -9,6 +9,7 @@ import { ContactService } from './contact.service';
 import { Validators } from '@angular/forms';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { AuthserviceService } from './authservice.service';
 //import { Add2cartComponent } from './add2cart/add2cart.component';
 //import { ConsoleReporter } from 'jasmine';
 
@@ -77,7 +78,7 @@ export class AppComponent implements OnInit{
  // private newone!: CommonService;
   
 
-  constructor(private contactService:ContactService,private newService: CommonService,private router:Router,private enService: EncryptionService,private ref: ChangeDetectorRef) {
+  constructor(private contactService:ContactService,private newService: CommonService,private router:Router,private auths:AuthserviceService,private enService: EncryptionService,private ref: ChangeDetectorRef){
     this.searchEndDate = this.SearchDate.add(this.ElapsTime, "minutes");
    // this.newService = newService;
    }
@@ -331,6 +332,7 @@ login(user_login:any){
      this.home= false;
      console.log(this.laundry);
      console.log(this.home);
+     this.auths.settoken();
      this.router.navigate(["Customer"]);
    }
   }
@@ -348,8 +350,8 @@ login(user_login:any){
         this.customer = true;
         this.home= false;
         this.newService.sendlaundryname(data.data[0].comname);
-        alert(data.data);
-        
+        this.auths.settoken();
+
        // this.ngOnInit();
       }
         , (error: any) => this.errorMessage = error)
@@ -384,7 +386,7 @@ Orders(){
   this.router.navigate(['Customer-list']);
 }
 Prices(){
-  this.router.navigate(['Customers']);
+  this.router.navigate(['Customer']);
 }
 logout(){
   this.home = true;

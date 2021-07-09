@@ -5,6 +5,7 @@ import { ContactService } from '../contact.service';
 import { Router } from '@angular/router';
 import { EncryptionService } from '../encryption.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { AuthserviceService } from '../authservice.service';
 @Component({
   selector: 'app-add2cart',
   templateUrl: './add2cart.component.html',
@@ -17,8 +18,8 @@ export class Add2cartComponent  extends AppComponent implements OnInit {
   getlen = 0;
   select:any = "Washing";
   get: boolean = false;
-  constructor(private ContactService:ContactService,private commonService:CommonService,private routing:Router,private enService1: EncryptionService,private ref1: ChangeDetectorRef) { 
-    super(ContactService,commonService,routing,enService1,ref1);
+  constructor(private ContactService:ContactService,private commonService:CommonService,private routing:Router,private auths1:AuthserviceService,private enService1: EncryptionService,private ref1: ChangeDetectorRef) { 
+    super(ContactService,commonService,routing,auths1,enService1,ref1);
   }
   ngOnInit(): void {
     console.log(this.commonService.getlaundryId());

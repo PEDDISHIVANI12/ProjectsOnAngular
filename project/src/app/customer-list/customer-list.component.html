@@ -18,7 +18,72 @@
   --font-size-small: .75rem;
   --font-size-default: .875rem;
 }
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+padding-top: 60px;
+}
 
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+border: 1px solid black;
+width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+position: absolute;
+right: 25px;
+top: 0;
+color: #000;
+font-size: 35px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: red;
+cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+-webkit-animation: animatezoom 0.6s;
+animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+from {-webkit-transform: scale(0)} 
+to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+from {transform: scale(0)} 
+to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+span.psw {
+   display: block;
+   float: none;
+}
+.cancelbtn {
+   width: 100%;
+}
+
+}
 * {
   box-sizing: border-box;
 }
@@ -47,6 +112,29 @@ section {
   list-style: none;
   padding: 0;
   margin: 0 0 1rem 0;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #6666ff;
+}
+
+.button2:hover {
+  background-color: #6666ff;
+  color: white;
 }
 .progress-bar li {
   flex: 2;
@@ -177,7 +265,7 @@ section {
         <th>Cutomer Address</th>
         <th>PickUp Date</th>
         <th>Delievery Date</th>
-        <th>Show</th>
+        <th>Show Items</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -188,7 +276,7 @@ section {
         <td>{{order.address}}</td>
         <td>{{order.pickup}}</td>
         <td>{{order.delidate}}</td>
-        <td><button (click) = "show(order)" onclick="document.getElementById('id13').style.display='block'" class="close" title="Close Modal" >Show</button></td>
+        <td><button (click) = "show(order)" onclick="document.getElementById('id13').style.display='block'"  class="button button2">Show</button></td>
         <td>
           <select name = "status" [(ngModel)] = "order.status" (change)="update($event,order)" >
             <option selected value="Ordered" >Ordered</option>
