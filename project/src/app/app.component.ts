@@ -12,6 +12,8 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { AuthserviceService } from './authservice.service';
 //import { Add2cartComponent } from './add2cart/add2cart.component';
 //import { ConsoleReporter } from 'jasmine';
+declare var config: any;
+
 
 @Component({
   selector: 'app-root',
@@ -334,6 +336,7 @@ login(user_login:any){
      console.log(this.home);
      this.auths.settoken();
      this.router.navigate(["Customer"]);
+   
    }
   }
     , (error: any) => this.errorMessage = error)

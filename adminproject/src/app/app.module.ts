@@ -11,16 +11,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from './auth.service';
 import { AuthenticationGuard } from './authentication.guard';
 import { LoginComponent } from './login/login.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { BudgetComponent } from './budget/budget.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 const appRoot: Routes = [
   {path: '', component: LoginComponent},
   {path: 'admin', component: AdminComponent,canActivate:[AuthenticationGuard]},
+  {path: 'customer', component: CustomerListComponent,canActivate:[AuthenticationGuard]},
+  {path: 'budget', component: BudgetComponent,canActivate:[AuthenticationGuard]},
+
 ]
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    CustomerListComponent,
+    BudgetComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +37,7 @@ const appRoot: Routes = [
     MatListModule,
     FormsModule,
     RouterModule,
+    Ng2SearchPipeModule,
     HttpModule,
     RouterModule.forRoot(appRoot)
   ],

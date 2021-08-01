@@ -81,6 +81,11 @@
 			width: 100%;
 		}
 	}
+	.required
+{
+    color: red;
+}
+
 </style>
 <div>
     <div class = "content">
@@ -96,19 +101,15 @@
 
 		<div class="container">
 			<div class="form-wrapper">
-                <label for="email"><b>Username</b></label>
+                <label for="email"><b>Username</b><span class="required">*</span></label>
                 <input ngModel type="text" placeholder="Enter Username" #username = "ngModel" name="username" required>
-                <div class = "text-danger">
-                  <div *ngIf="userForm_login.touched && username.errors?.required">Please Enter Username</div>
-                </div>
+                
               </div>
 
 			<div class="form-wrapper">
-  <label for="email"><b>Password</b></label>
+  <label for="email"><b>Password</b><span class="required">*</span></label>
   <input ngModel type="password" placeholder="Enter Password" #password = "ngModel" name="password" required>
-  <div class = "text-danger">
-    <div *ngIf="userForm_login.touched && password.errors?.required">Please Enter Password</div>
-  </div>
+  
 </div>
 
 			<button [disabled] = "!userForm_login.valid" >Login</button>

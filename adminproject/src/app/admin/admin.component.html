@@ -1,3 +1,10 @@
+<style>
+  .required
+{
+    color: red;
+}
+
+</style>
 <div class="modal" id="id02">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -12,29 +19,22 @@
         <form class="modal-content animate" #changePassword="ngForm" (ngSubmit)="changeadminPassword(changePassword.value)" novalidate>
     
       <div class="form-wrapper">
-        <label for="psw"><b>Present Password :</b></label><br/>
+        <label for="psw"><b>Present Password</b><span class="required">*</span></label><br/>
         <input ngModel type="password" placeholder="Enter Present Password"  #presentpassword = "ngModel" name="presentpassword" required>
-        <div class = "text-danger">
-          <div *ngIf="changePassword.touched && presentpassword.errors?.required">Please enter Present Password</div>
-        </div>
+       
         </div>
       
       
         <div class="form-wrapper">
-        <label for="psw"><b>New Password :</b></label><br/>
+        <label for="psw"><b>New Password</b><span class="required">*</span></label><br/>
         <input ngModel  type="password" placeholder="Enter newpassword" #newpassword = "ngModel" name="newpassword" required>
-        <div class = "text-danger">
-          <div *ngIf="changePassword.touched && newpassword.errors?.required">Please enter newpassword</div>
+        
         </div>
-        </div>
-      
       
         <div class="form-wrapper">
-        <label for="psw"><b>Confirm Password :</b></label><br/>
+        <label for="psw"><b>Confirm Password</b><span class="required">*</span></label><br/>
         <input ngModel  type="password" placeholder="Enter Confirm Password" #conpass = "ngModel" name="conpass" required>
-        <div class = "text-danger">
-          <div *ngIf="changePassword.touched && conpass.errors?.required">Please enter Confirm Password</div>
-        </div>
+        
         </div>
         <br/>
     
@@ -85,7 +85,7 @@
   </div>
 </div>
 
-<div style="text-align: center;color: blue;">
+<div style="text-align: center;">
 <button  type="button" onclick = "document.getElementById('id02').style.display='block'" style="width:auto;color:black;">ChangePassword</button>
 </div>
 
@@ -93,7 +93,7 @@
 <br/>
 <div class="container">
    
-    <table class="table table-hover">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">S.No</th>
@@ -105,7 +105,7 @@
         </tr>
       </thead>
       <tbody *ngFor="let session of Repdata">
-        <tr class="table-primary">
+        <tr >
           <th scope="row">1</th>
           <td>{{session.comname}}</td>
           <td>{{session.email_laundry}}</td>

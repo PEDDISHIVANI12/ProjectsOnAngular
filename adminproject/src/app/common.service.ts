@@ -21,6 +21,14 @@ export class CommonService {
     return this.http.get('http://localhost:8082/api/getUser/')
       .map((response: Response) => response.json());
   }
+  GetUserCustomers() {
+    return this.http.get('http://localhost:8081/api/getUser_customer/')
+      .map((response: Response) => response.json());
+  }
+  GetPaymentList() {
+    return this.http.get('http://localhost:8091/api/getUser/')
+      .map((response: Response) => response.json());
+  }
 
   UpdateUser(data:any) {
     console.log(data);

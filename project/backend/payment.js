@@ -84,9 +84,7 @@ var UsersSchema = new Schema({
   expmonth: {
     type: String,
   },
-  expyear: {
-    type: String,
-  },
+  
   cvv: {
     type: String,
   },
@@ -145,7 +143,6 @@ app.post("/api/UpdatePayment", function (req, res) {
     cname:req.body.cname,
     ccnum:req.body.ccnum,
     expmonth:req.body.expmonth,
-    expyear:req.body.expyear,
     delidate:req.body.delidate,
     fullname:req.body.fullname,
     sum:req.body.sum,

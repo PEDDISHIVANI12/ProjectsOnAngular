@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { Add2cartComponent } from './add2cart/add2cart.component';
 import { SafehtmlPipe } from './safehtml.pipe';
 import { AuthGuard } from './auth.guard';
 import { AuthserviceService } from './authservice.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoot: Routes = [
@@ -53,6 +54,7 @@ const appRoot: Routes = [
   imports: [
     BrowserModule,
     NgOtpModule,
+    NgbModule,
     Ng2SearchPipeModule,
     AppRoutingModule,
     FormsModule,
@@ -64,6 +66,7 @@ const appRoot: Routes = [
   ],
   
   providers: [AuthserviceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

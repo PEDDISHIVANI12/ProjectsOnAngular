@@ -7,6 +7,11 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script type='text/javascript' src='script.js'></script>
 
   <!-- CSS here -->
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
@@ -84,6 +89,22 @@ font-size: 17px;
   cursor: pointer;
 }
 
+.btn4 {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn4:hover {background: #eee;}
+
+.success {color: green;}
+.info {color: dodgerblue;}
+.warning {color: orange;}
+.danger {color: red;}
+.default {color: black;}
 .button2 {
   background-color: white; 
   color: black; 
@@ -771,7 +792,7 @@ function checkSecond(sec) {
                               <td>{{data[2]}}</td>
                               <th scope="col"><button (click) = "onDecrement(data)"class="button button2" style="width:7px;border-radius:50%;">-</button>{{data[3]}}<button (click) = "onIncrement(data)"class="button button2" style="width: 7px;border-radius:50%;">+</button></th>
                               <th scope="col">{{data[2] * data[3]}}</th>
-                              <th><button (click) = "removing(data)" class="button button2">Delete <i class="fa fa-trash"></i></button></th>
+                              <th><button (click) = "removing(data)" class="btn4 danger" >Delete<i class="fa fa-trash"></i></button></th>
                             </tr>
                           </tbody>
                         </table>
@@ -811,8 +832,9 @@ function checkSecond(sec) {
       
                           <div>
                               <span class="text-secondary-d1 text-105">Thank you for your business</span>
-                             
-                            
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                               <a  onclick="document.getElementById('id10').style.display='none'" class="button button2" (click) = "movetopayment()">Pay Now <i class="fa fa-credit-card"></i></a>
                             </div>
       
