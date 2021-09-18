@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"node admin.js\" \"node customer.js\" \"node email.js\" \"node laundry.js\" \"node payment.js\" \"node priceslist.js\" \"node sendemail.js\" \"ng s --o\",,
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
