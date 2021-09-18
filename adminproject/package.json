@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"node acceptlaundry.js\" \"node admin.js\" \"node email.js\" \"npm s --o\",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
